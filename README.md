@@ -1,7 +1,13 @@
-# AugmentCode-Free
+# AugmentCode-Free v1.0.0
+
 AugmentCode无限免费续杯方案；新账号可获得600次免费的Claude Sonnet 4调用
 
-**支持多IDE**: VS Code、Cursor、Windsurf 的维护工具包
+**支持多IDE**: VS Code、Cursor、Windsurf 的专业维护工具包
+
+[![GitHub release](https://img.shields.io/github/v/release/BasicProtein/AugmentCode-Free)](https://github.com/BasicProtein/AugmentCode-Free/releases)
+[![Python](https://img.shields.io/badge/Python-3.7+-blue.svg)](https://www.python.org/downloads/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)](https://github.com/BasicProtein/AugmentCode-Free)
 
 2025年6月18日更新：
 
@@ -80,67 +86,109 @@ Summary: The primary account can be any account, even if it is blocked. The prim
 -   **User Feedback**: Provides clear confirmation dialogs and status messages for all operations.
 -   **Modern Design**: Features animated interface elements and intuitive user experience.
 
-## Installation
+## 📥 Installation & Download
 
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/BasicProtein/AugmentCode-Free.git
-    cd AugmentCode-Free
-    ```
-2.  **Install dependencies (if any specified in `requirements.txt` or `setup.py`):**
-    ```bash
-    pip install .
-    # or
-    # pip install -r requirements.txt
-    ```
+### Option 1: Python Package (Recommended)
+Install directly from PyPI (coming soon) or from source:
 
-## Usage
+```bash
+# Install from source
+git clone https://github.com/BasicProtein/AugmentCode-Free.git
+cd AugmentCode-Free
+pip install .
 
-**⚠️ Important Notes**:
-- Please log out of your AugmentCode account before use
-- Close the IDE background and run the script
-- Recommend backing up important data first
+# Or install dependencies manually
+pip install -r requirements.txt
+```
 
-**⚠️ Important Notes**:
-- Please log out of your AugmentCode account before use
-- Close the IDE background and run the script
-- Recommend backing up important data first
+### Option 2: Standalone Downloads
 
-**⚠️ Important Notes**:
-- Please log out of your AugmentCode account before use
-- Close the IDE background and run the script
-- Recommend backing up important data first
+#### Windows Users
+- **Executable**: Download `AugmentCode-Free-v1.0.0.exe` (11.20 MB)
+  - No Python installation required
+  - Double-click to run
+  - Includes all dependencies
 
-**(Important things should be said three times!)**
+#### Cross-Platform Users
+- **Portable Package**: Download `AugmentCode-Free-v1.0.0-Portable.zip` (28 KB)
+  - Works on Windows, Linux, macOS
+  - Requires Python 3.7+
+  - Extract and run startup script
 
-You can use AugmentCode-Free in two ways:
+#### Developers
+- **Source Package**: Download `augment-tools-core-1.0.0.tar.gz` (18 KB)
+- **Wheel Package**: Download `augment_tools_core-1.0.0-py3-none-any.whl` (16 KB)
 
-### 1. Graphical User Interface (GUI) - Recommended
-The GUI provides an easy-to-use interface for all features.
+### 📋 System Requirements
+- **Python**: 3.7 or higher (for source/portable versions)
+- **Operating System**: Windows 7/10/11, Linux, macOS
+- **Memory**: 100MB RAM minimum
+- **Storage**: 50MB free space
 
--   **Directly (from project root):**
-    ```bash
-    python main.py
-    ```
-
--   **If installed via pip (as `augment-tools-gui`):**
-    ```bash
-    augment-tools-gui
+### 🔐 File Verification
+All release files include SHA256, SHA1, and MD5 checksums for integrity verification.
+Download `checksums.txt` or `SHA256SUMS` from the release page to verify your downloads.
     ```
 
-### 2. Command-Line Interface (CLI)
-For users who prefer the command line or need to script operations.
+## 🚀 Usage
 
--   **If installed via pip (as `augment-tools`):**
-    ```bash
-    # Show help
-    augment-tools --help
-    
-    # Clean VS Code database
-    augment-tools clean-db --ide vscode
-    
-    # Clean Cursor database
-    augment-tools clean-db --ide cursor
+### ⚠️ Important Notes
+**Before using this tool:**
+- ✅ **Log out** of your AugmentCode account
+- ✅ **Close all IDE instances** (VS Code, Cursor, Windsurf)
+- ✅ **Backup important data** if needed
+- ✅ The tool will automatically detect and help close running IDEs
+
+### Method 1: GUI Interface (Recommended)
+
+#### Windows Executable
+1. Download `AugmentCode-Free-v1.0.0.exe`
+2. Double-click to run
+3. Select your IDE from the dropdown
+4. Click the desired operation button
+5. Follow on-screen instructions
+
+#### Portable Version
+1. Download and extract `AugmentCode-Free-v1.0.0-Portable.zip`
+2. **Windows**: Double-click `Start-AugmentCode-Free.bat`
+3. **Linux/macOS**: Run `./start-augmentcode-free.sh`
+4. Use the GUI interface as described above
+
+#### From Source
+```bash
+# Clone and install
+git clone https://github.com/BasicProtein/AugmentCode-Free.git
+cd AugmentCode-Free
+pip install -r requirements.txt
+
+# Launch GUI
+python main.py
+```
+
+### Method 2: Command Line Interface
+
+#### After Installation
+```bash
+# Install the package
+pip install augment-tools-core
+
+# Show all available commands
+augment-tools --help
+
+# Clean database for specific IDE
+augment-tools clean-db --ide vscode
+augment-tools clean-db --ide cursor
+augment-tools clean-db --ide windsurf
+
+# Modify telemetry IDs
+augment-tools modify-ids --ide vscode
+augment-tools modify-ids --ide cursor
+augment-tools modify-ids --ide windsurf
+
+# Run all operations (clean + modify)
+augment-tools run-all --ide vscode
+augment-tools run-all --ide cursor
+augment-tools run-all --ide windsurf
     
     # Modify Windsurf telemetry IDs
     augment-tools modify-ids --ide windsurf
