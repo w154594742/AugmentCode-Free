@@ -89,7 +89,11 @@ def get_ide_paths(ide_type: IDEType) -> Optional[Dict[str, Path]]:
 
         elif ide_type == IDEType.CURSOR:
             if system == "Windows":
-                base_dir = Path.home() / ".cursor"
+                appdata = os.environ.get("APPDATA")
+                if not appdata:
+                    print_error("APPDATA environment variable not found. Cannot locate Cursor data.")
+                    return None
+                base_dir = Path(appdata) / "Cursor" / "User"
             elif system == "Darwin":  # macOS
                 # Cursor uses both locations based on your provided info
                 base_dir = Path.home() / ".cursor"
@@ -103,22 +107,27 @@ def get_ide_paths(ide_type: IDEType) -> Optional[Dict[str, Path]]:
                 return None
 
             # Cursor specific paths
-            paths["state_db"] = base_dir / "User" / "globalStorage" / "state.vscdb"
-            paths["storage_json"] = base_dir / "User" / "globalStorage" / "storage.json"
-            paths["extensions"] = base_dir / "extensions"
+            paths["state_db"] = base_dir / "globalStorage" / "state.vscdb"
+            paths["storage_json"] = base_dir / "globalStorage" / "storage.json"
+            paths["extensions"] = base_dir.parent / "extensions"
 
         elif ide_type == IDEType.WINDSURF:
             if system == "Windows":
-                base_dir = Path.home() / ".windsurf"
+                # Based on official documentation: C:\Users\[YourUsername]\.codeium\windsurf
+                base_dir = Path.home() / ".codeium" / "windsurf"
             elif system == "Darwin":  # macOS
-                base_dir = Path.home() / ".windsurf"
+                # Based on official documentation: ~/.codeium/windsurf
+                base_dir = Path.home() / ".codeium" / "windsurf"
             elif system == "Linux":
-                base_dir = Path.home() / ".windsurf"
+                # Based on official documentation: ~/.codeium/windsurf
+                base_dir = Path.home() / ".codeium" / "windsurf"
             else:
                 print_error(f"Unsupported operating system: {system}")
                 return None
 
             # Windsurf specific paths
+            # Note: Windsurf may use different storage structure than VSCode
+            # These paths are based on VSCode pattern but may need verification
             paths["state_db"] = base_dir / "User" / "globalStorage" / "state.vscdb"
             paths["storage_json"] = base_dir / "User" / "globalStorage" / "storage.json"
             paths["extensions"] = base_dir / "extensions"
