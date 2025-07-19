@@ -128,7 +128,6 @@ pip install -r requirements.txt
 ### 🔐 File Verification
 All release files include SHA256, SHA1, and MD5 checksums for integrity verification.
 Download `checksums.txt` or `SHA256SUMS` from the release page to verify your downloads.
-    ```
 
 ## 🚀 Usage
 
@@ -189,13 +188,7 @@ augment-tools modify-ids --ide windsurf
 augment-tools run-all --ide vscode
 augment-tools run-all --ide cursor
 augment-tools run-all --ide windsurf
-    
-    # Modify Windsurf telemetry IDs
-    augment-tools modify-ids --ide windsurf
-    
-    # Run all tools for VS Code
-    augment-tools run-all --ide vscode
-    ```
+```
 
 -   **Directly (for development/advanced use, from project root):**
     Refer to `augment_tools_core/cli.py` for direct script execution details if needed.
