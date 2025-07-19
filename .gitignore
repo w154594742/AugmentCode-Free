@@ -36,6 +36,10 @@ MANIFEST
 pip-log.txt
 pip-delete-this-directory.txt
 
+# Version number files (pip output accidentally saved as files)
+[0-9]*.[0-9]*.[0-9]*
+[0-9]*.[0-9]*.[0-9]*'
+
 # Unit test / coverage reports
 htmlcov/
 .tox/

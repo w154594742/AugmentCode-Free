@@ -1,5 +1,0 @@
-Requirement already satisfied: build in d:\software\python\python310\lib\site-packages (1.2.2.post1)
-Requirement already satisfied: packaging>=19.1 in d:\software\python\python310\lib\site-packages (from build) (25.0)
-Requirement already satisfied: pyproject_hooks in d:\software\python\python310\lib\site-packages (from build) (1.2.0)
-Requirement already satisfied: colorama in d:\software\python\python310\lib\site-packages (from build) (0.4.6)
-Requirement already satisfied: tomli>=1.1.0 in d:\software\python\python310\lib\site-packages (from build) (2.0.1)
