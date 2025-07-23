@@ -18,26 +18,34 @@ from pathlib import Path
 
 def main():
     """主函数 - 启动GUI应用程序"""
-    print("=" * 50)
-    print("🚀 AugmentCode-Free 工具启动中...")
-    print("=" * 50)
-    print()
-    
     # 添加当前目录到Python路径
     current_dir = Path(__file__).parent
     sys.path.insert(0, str(current_dir))
-    
+
     try:
+        # 导入配置和语言管理
+        from config_manager import get_config_manager
+        from language_manager import get_language_manager, get_text
+
+        # 初始化配置管理器
+        config_manager = get_config_manager()
+        language_manager = get_language_manager(config_manager)
+
+        print("=" * 50)
+        print(get_text("console.starting"))
+        print("=" * 50)
+        print()
+
         # 导入并启动GUI
         from gui import main as gui_main
-        
-        print("✅ 正在启动图形界面...")
-        print("💡 提示：如果界面没有出现，请检查是否有防火墙或安全软件阻止")
+
+        print(get_text("console.gui_starting"))
+        print(get_text("console.gui_tip"))
         print()
-        
+
         # 启动GUI
         gui_main()
-        
+
     except ImportError as e:
         print(f"❌ 导入错误: {e}")
         print()
@@ -46,6 +54,10 @@ def main():
         print("2. 确保Python版本为3.7或更高")
         print("3. 确保所有项目文件都在同一目录下")
         print("4.其他问题请提交issue")
+        input("\n按回车键退出...")
+        sys.exit(1)
+    except Exception as e:
+        print(f"❌ 启动错误: {e}")
         input("\n按回车键退出...")
         sys.exit(1)
         

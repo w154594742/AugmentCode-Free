@@ -1,0 +1,94 @@
+{
+  "app": {
+    "title": "AugmentCode-Free",
+    "welcome": "欢迎使用",
+    "version": "v1.0.2 - 多IDE支持版本",
+    "select_ide": "选择 IDE:",
+    "language": "语言:",
+    "about": "关于"
+  },
+  "buttons": {
+    "run_all": "一键修改所有配置",
+    "close_ide": "关闭选中的IDE", 
+    "clean_db": "清理IDE数据库",
+    "modify_ids": "修改IDE遥测ID",
+    "clear_log": "清空日志",
+    "ok": "确定",
+    "cancel": "取消",
+    "yes": "是",
+    "no": "否"
+  },
+  "dialogs": {
+    "titles": {
+      "close_confirm": "关闭{ide_name}确认",
+      "run_all_confirm": "一键修改确认",
+      "clean_db_confirm": "清理数据库确认",
+      "modify_ids_confirm": "修改遥测ID确认",
+      "ide_running": "{ide_name}正在运行",
+      "about_title": "关于 AugmentCode-Free",
+      "welcome_title": "欢迎使用 AugmentCode-Free",
+      "language_selection": "选择语言"
+    },
+    "messages": {
+      "close_warning": "• 若有未保存的内容请先进行保存\n• {ide_name}中需要备份的聊天记录请先备份\n\n确认无误后才能关闭{ide_name}。\n\n是否继续关闭{ide_name}？",
+      "run_all_warning": "此按钮会关闭{ide_name}并清除Augment聊天数据！\n\n请确保：\n• 文件已保存\n• {ide_name}中的重要聊天记录已备份\n\n是否继续执行一键修改？",
+      "clean_db_warning": "此操作将清理{ide_name}数据库中包含关键字'{keyword}'的条目。\n\n请确保：\n• {ide_name}已关闭\n• 重要数据已备份\n\n是否继续清理数据库？",
+      "modify_ids_warning": "此操作将修改{ide_name}的遥测ID。\n\n请确保：\n• {ide_name}已关闭\n• 重要数据已备份\n\n是否继续修改遥测ID？",
+      "ide_running_warning": "检测到{ide_name}正在运行！\n\n请先关闭{ide_name}再进行操作。\n您可以点击\"关闭选中的IDE\"按钮。",
+      "welcome_message": "欢迎使用 AugmentCode-Free！\n\n这是一个开源免费的IDE维护工具，支持VS Code、Cursor和Windsurf。\n\n请选择您的首选语言：",
+      "first_run_warning": "⚠️ 重要提示：\n\n本项目完全开源免费！\n如果有人向您收费，请立即联系销售方退款并举报诈骗行为。\n\n项目地址：https://github.com/BasicProtein/AugmentCode-Free",
+      "continue_text": "已阅读"
+    }
+  },
+  "status": {
+    "success": "✅ 操作完成",
+    "error": "❌ 操作失败", 
+    "warning": "⚠️ 注意",
+    "processing": "ℹ️ 处理中...",
+    "ready": "就绪",
+    "running": "正在执行一键修改...",
+    "closing_ide": "正在关闭IDE...",
+    "cleaning_db": "正在清理数据库...",
+    "modifying_ids": "正在修改遥测ID...",
+    "completed": "✅ 所有工具执行已完成",
+    "failed": "❌ 工具执行失败"
+  },
+  "copyright": {
+    "notice": "© 2025 BasicProtein. All rights reserved.",
+    "license": "Licensed under MIT License", 
+    "github": "https://github.com/BasicProtein/AugmentCode-Free",
+    "fraud_warning": "⚠️ 本项目完全开源免费！\n如果有人向您收费，请立即联系销售方\n退款并举报诈骗行为。",
+    "open_source": "本项目开源免费",
+    "report_fraud": "如遇付费请举报诈骗"
+  },
+  "console": {
+    "starting": "🚀 AugmentCode-Free 工具启动中...",
+    "gui_starting": "✅ 正在启动图形界面...",
+    "gui_tip": "💡 提示：如果界面没有出现，请检查是否有防火墙或安全软件阻止",
+    "import_error": "❌ 导入错误",
+    "solutions": "🔧 解决方案：",
+    "install_deps": "1. 确保所有依赖都已安装：pip install -r requirements.txt",
+    "check_python": "2. 确保Python版本为3.7或更高",
+    "check_files": "3. 确保所有项目文件都在同一目录下",
+    "submit_issue": "4. 其他问题请提交issue",
+    "press_enter": "按回车键退出...",
+    "interrupted": "应用程序被用户中断"
+  },
+  "cli": {
+    "description": "AugmentCode-Free: 多IDE维护工具。提供清理IDE数据库和修改遥测ID的实用程序。支持VS Code、Cursor和Windsurf。",
+    "clean_db_help": "通过删除匹配关键字的条目来清理指定IDE的状态数据库。",
+    "modify_ids_help": "修改指定IDE在storage.json中的遥测ID（machineId、devDeviceId）。",
+    "run_all_help": "为指定IDE运行所有可用工具：clean-db然后modify-ids。",
+    "ide_option_help": "要处理的IDE (vscode, cursor, windsurf)",
+    "keyword_option_help": "要从数据库中搜索和删除的关键字（不区分大小写）。",
+    "keyword_clean_help": "数据库清理的关键字（不区分大小写）。",
+    "executing": "执行中：{operation}",
+    "finished": "进程已完成。",
+    "errors": "进程报告错误。检查之前的消息。",
+    "step": "--- 步骤 {step}: {operation} ---",
+    "error_occurred": "在{step}步骤中发生错误: {error}",
+    "proceeding": "尽管出现错误，仍继续下一步。",
+    "all_finished": "{ide_name}的所有工具已完成执行序列。",
+    "unsupported_ide": "不支持的IDE: {ide}。支持的IDE: vscode, cursor, windsurf"
+  }
+}

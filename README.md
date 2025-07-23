@@ -2,18 +2,42 @@
 
 AugmentCode无限免费续杯方案；新账号可获得600次免费的Claude Sonnet 4调用
 
+AugmentCode unlimited free refill plan; new accounts can get 600 free Claude Sonnet 4 calls
+
 **支持多IDE**: VS Code、Cursor、Windsurf 的专业维护工具包
+
+**Multi-IDE Support**: Maintenance toolkit for VS Code, Cursor, and Windsurf
 
 [![GitHub release](https://img.shields.io/github/v/release/BasicProtein/AugmentCode-Free)](https://github.com/BasicProtein/AugmentCode-Free/releases)
 [![Python](https://img.shields.io/badge/Python-3.7+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)](https://github.com/BasicProtein/AugmentCode-Free)
 
-2025年6月18日更新：
+#### 2025年7月23日更新：
 
-最新思路：
+2025年7月23日凌晨，官方修改邀请策略：
 
-team邀请方式：
+- 原来的300次请求更改为150次
+- 团队依旧可以创建，但是请求次数不叠加
+- 我的清理工具依旧可以使用，且支持多IDE；使用前请退出账号关闭IDE
+- 部分用户可能由于各种操作原因，清理后账号依旧被防控，此时建议继续使用team邀请的方式，大号创建team，小号加入team，登录IDE使用，尽管请求次数不叠加。
+
+#### Updated on July 23, 2025:
+
+At dawn on July 23, 2025, the official invitation policy was modified:
+
+- The original 300 requests were changed to 150
+
+- Teams can still be created, but the number of requests is not cumulative
+
+- My cleaning tool can still be used and supports multiple IDEs; please log out of the account and close the IDE before use
+- Some users may still be controlled after the account is cleaned due to various operational reasons. At this time, it is recommended to continue to use the team invitation method, create a team with a large account, join the team with a small account, and log in to the IDE to use it, although the number of requests is not cumulative.
+
+#### 2025年6月18日更新：
+
+##### 最新思路：
+
+##### team邀请方式：
 
 1.首先准备任意一个账号（被封禁的，试用到期的，用完免费次数的都可以），浏览器打开https://app.augmentcode.com/account/subscription
 获取个人中心页面，点击Team，再点击add member添加一个小号作为团队成员。

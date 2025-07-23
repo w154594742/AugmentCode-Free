@@ -1,0 +1,94 @@
+{
+  "app": {
+    "title": "AugmentCode-Free",
+    "welcome": "Welcome",
+    "version": "v1.0.2 - Multi-IDE Support",
+    "select_ide": "Select IDE:",
+    "language": "Language:",
+    "about": "About"
+  },
+  "buttons": {
+    "run_all": "Modify All Configurations",
+    "close_ide": "Close Selected IDE",
+    "clean_db": "Clean IDE Database", 
+    "modify_ids": "Modify Telemetry IDs",
+    "clear_log": "Clear Log",
+    "ok": "OK",
+    "cancel": "Cancel",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "dialogs": {
+    "titles": {
+      "close_confirm": "Close {ide_name} Confirmation",
+      "run_all_confirm": "Modify All Confirmation",
+      "clean_db_confirm": "Clean Database Confirmation",
+      "modify_ids_confirm": "Modify Telemetry IDs Confirmation",
+      "ide_running": "{ide_name} is Running",
+      "about_title": "About AugmentCode-Free",
+      "welcome_title": "Welcome to AugmentCode-Free",
+      "language_selection": "Select Language"
+    },
+    "messages": {
+      "close_warning": "• Please save any unsaved content first\n• Backup important chat records in {ide_name}\n\nConfirm everything is ready before closing {ide_name}.\n\nContinue to close {ide_name}?",
+      "run_all_warning": "This will close {ide_name} and clear Augment chat data!\n\nPlease ensure:\n• Files are saved\n• Important chat records in {ide_name} are backed up\n\nContinue with modification?",
+      "clean_db_warning": "This will clean {ide_name} database entries containing keyword '{keyword}'.\n\nPlease ensure:\n• {ide_name} is closed\n• Important data is backed up\n\nContinue cleaning database?",
+      "modify_ids_warning": "This will modify {ide_name} telemetry IDs.\n\nPlease ensure:\n• {ide_name} is closed\n• Important data is backed up\n\nContinue modifying telemetry IDs?",
+      "ide_running_warning": "Detected {ide_name} is running!\n\nPlease close {ide_name} before proceeding.\nYou can click \"Close Selected IDE\" button.",
+      "welcome_message": "Welcome to AugmentCode-Free!\n\nThis is an open source and free IDE maintenance tool that supports VS Code, Cursor, and Windsurf.\n\nPlease select your preferred language:",
+      "first_run_warning": "⚠️ Important Notice:\n\nThis project is completely open source and free!\nIf someone charges you, please contact the seller for a refund immediately and report the fraud.\n\nProject URL: https://github.com/BasicProtein/AugmentCode-Free",
+      "continue_text": "I have read"
+    }
+  },
+  "status": {
+    "success": "✅ Operation Completed",
+    "error": "❌ Operation Failed",
+    "warning": "⚠️ Warning", 
+    "processing": "ℹ️ Processing...",
+    "ready": "Ready",
+    "running": "Running modification...",
+    "closing_ide": "Closing IDE...",
+    "cleaning_db": "Cleaning database...",
+    "modifying_ids": "Modifying telemetry IDs...",
+    "completed": "✅ All tools execution completed",
+    "failed": "❌ Tools execution failed"
+  },
+  "copyright": {
+    "notice": "© 2025 BasicProtein. All rights reserved.",
+    "license": "Licensed under MIT License",
+    "github": "https://github.com/BasicProtein/AugmentCode-Free", 
+    "fraud_warning": "⚠️ This project is completely open source and free!\nIf someone charges you, please contact the seller\nfor a refund immediately and report the fraud.",
+    "open_source": "Open Source & Free",
+    "report_fraud": "Report Fraud if Charged"
+  },
+  "console": {
+    "starting": "🚀 AugmentCode-Free tool starting...",
+    "gui_starting": "✅ Starting graphical interface...",
+    "gui_tip": "💡 Tip: If the interface doesn't appear, check if firewall or security software is blocking",
+    "import_error": "❌ Import error",
+    "solutions": "🔧 Solutions:",
+    "install_deps": "1. Ensure all dependencies are installed: pip install -r requirements.txt",
+    "check_python": "2. Ensure Python version is 3.7 or higher",
+    "check_files": "3. Ensure all project files are in the same directory",
+    "submit_issue": "4. For other issues, please submit an issue",
+    "press_enter": "Press Enter to exit...",
+    "interrupted": "Application interrupted by user"
+  },
+  "cli": {
+    "description": "AugmentCode-Free: Multi-IDE Maintenance Tools. Provides utilities for cleaning IDE databases and modifying telemetry IDs. Supports VS Code, Cursor, and Windsurf.",
+    "clean_db_help": "Cleans the specified IDE's state database by removing entries matching the keyword.",
+    "modify_ids_help": "Modifies the specified IDE's telemetry IDs (machineId, devDeviceId) in storage.json.",
+    "run_all_help": "Runs all available tools for the specified IDE: clean-db and then modify-ids.",
+    "ide_option_help": "IDE to process (vscode, cursor, windsurf)",
+    "keyword_option_help": "Keyword to search for and remove from the database (case-insensitive).",
+    "keyword_clean_help": "Keyword for database cleaning (case-insensitive).",
+    "executing": "Executing: {operation}",
+    "finished": "Process finished.",
+    "errors": "Process reported errors. Check previous messages.",
+    "step": "--- Step {step}: {operation} ---",
+    "error_occurred": "An error occurred during {step} step: {error}",
+    "proceeding": "Proceeding to the next step despite the error.",
+    "all_finished": "All tools for {ide_name} have finished their execution sequence.",
+    "unsupported_ide": "Unsupported IDE: {ide}. Supported: vscode, cursor, windsurf"
+  }
+}
