@@ -1,8 +1,21 @@
 #!/usr/bin/env python3
 """
-GUI Module for AugmentCode-Free
-Provides a modern, CursorPro-style graphical interface with page management.
+GUI Module for AugmentCode-Free (Tkinter Backup)
+This file has been replaced by PyQt6 implementation.
+Kept as backup for reference.
 """
+
+# This file is now a backup - the main GUI has been moved to PyQt6
+# See gui_qt6/ directory for the new implementation
+
+print("⚠️ Warning: This Tkinter GUI has been replaced by PyQt6 implementation.")
+print("Please use the new PyQt6 GUI in gui_qt6/ directory.")
+
+def main():
+    """Backup main function - redirects to PyQt6"""
+    print("❌ Tkinter GUI is deprecated. Please use PyQt6 implementation.")
+    from gui_qt6.main_window import main as qt_main
+    return qt_main()
 
 import tkinter as tk
 from tkinter import ttk, messagebox

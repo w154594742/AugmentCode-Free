@@ -22,7 +22,7 @@ class ConfigManager:
         self.default_settings = {
             "language": "zh_CN",
             "first_run": True,
-            "window_geometry": "500x750",
+            "window_geometry": "520x780",
             "last_selected_ide": "VS Code",
             "show_welcome": True,
             "show_about_on_startup": True,

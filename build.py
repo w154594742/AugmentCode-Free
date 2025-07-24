@@ -37,7 +37,7 @@ import concurrent.futures
 from contextlib import contextmanager
 
 # Build Configuration
-VERSION = "1.0.2"
+VERSION = "1.0.3"
 PROJECT_NAME = "AugmentCode-Free"
 AUTHOR = "BasicProtein"
 DESCRIPTION = "多IDE维护工具包 - 支持VS Code、Cursor、Windsurf"
@@ -91,12 +91,12 @@ class BuildLogger:
     def success(self, message: str) -> None:
         """Log success message"""
         self.logger.info(f"SUCCESS: {message}")
-        print(f"✓ SUCCESS: {message}")
+        print(f"\033[92m[SUCCESS]\033[0m {message}")
     
     def error(self, message: str) -> None:
         """Log error message"""
         self.logger.error(f"ERROR: {message}")
-        print(f"✗ ERROR: {message}")
+        print(f"\033[91m[ERROR]\033[0m {message}")
     
     def info(self, message: str) -> None:
         """Log info message"""
@@ -106,7 +106,7 @@ class BuildLogger:
     def warning(self, message: str) -> None:
         """Log warning message"""
         self.logger.warning(f"WARNING: {message}")
-        print(f"⚠ WARNING: {message}")
+        print(f"\033[93m[WARNING]\033[0m {message}")
 
 # Global logger instance
 logger = BuildLogger()

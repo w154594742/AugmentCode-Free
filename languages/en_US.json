@@ -2,7 +2,7 @@
   "app": {
     "title": "AugmentCode-Free",
     "welcome": "Welcome",
-    "version": "v1.0.2 - Multi-IDE Support",
+    "version": "v1.0.3 - Multi-IDE Support",
     "select_ide": "Select IDE:",
     "language": "Language:",
     "about": "About"

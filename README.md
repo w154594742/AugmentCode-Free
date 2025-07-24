@@ -1,8 +1,8 @@
-# AugmentCode-Free v1.0.0
+# AugmentCode-Free v1.0.3
 
-AugmentCode无限免费续杯方案；新账号可获得600次免费的Claude Sonnet 4调用
+#AugmentCode无限免费续杯方案；新账号可获得600次免费的Claude Sonnet 4调用
 
-AugmentCode unlimited free refill plan; new accounts can get 600 free Claude Sonnet 4 calls
+#AugmentCode unlimited free refill plan; new accounts can get 600 free Claude Sonnet 4 calls
 
 **支持多IDE**: VS Code、Cursor、Windsurf 的专业维护工具包
 
@@ -12,6 +12,34 @@ AugmentCode unlimited free refill plan; new accounts can get 600 free Claude Son
 [![Python](https://img.shields.io/badge/Python-3.7+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)](https://github.com/BasicProtein/AugmentCode-Free)
+
+#### 2025年7月25日更新 (v1.0.3)：
+
+**🔧 Bug修复**：
+- 修复了About对话框中"支持的IDE"和"主要功能"模块文字显示问题
+- 修复了构建系统中的Unicode编码问题，提升了跨平台兼容性
+
+**🧹 代码清理**：
+- 清理了无用的测试文件和临时文档
+- 统一了版本号，确保所有配置文件版本一致
+
+**📦 发布改进**：
+- 优化了构建流程，生成更完整的发布包
+- 改进了错误信息显示，使用颜色区分不同类型的消息
+
+#### July 25, 2025 Update (v1.0.3):
+
+**🔧 Bug Fixes**:
+- Fixed text display issue in About dialog's "Supported IDEs" and "Main Features" modules
+- Fixed Unicode encoding issues in build system, improved cross-platform compatibility
+
+**🧹 Code Cleanup**:
+- Cleaned up unused test files and temporary documents
+- Unified version numbers across all configuration files
+
+**📦 Release Improvements**:
+- Optimized build process to generate more complete release packages
+- Improved error message display with color-coded message types
 
 #### 2025年7月23日更新：
 
@@ -128,20 +156,20 @@ pip install -r requirements.txt
 ### Option 2: Standalone Downloads
 
 #### Windows Users
-- **Executable**: Download `AugmentCode-Free-v1.0.0.exe` (11.20 MB)
+- **Executable**: Download `AugmentCode-Free-v1.0.3.exe` (34.5 MB)
   - No Python installation required
   - Double-click to run
   - Includes all dependencies
 
 #### Cross-Platform Users
-- **Portable Package**: Download `AugmentCode-Free-v1.0.0-Portable.zip` (28 KB)
+- **Portable Package**: Download `AugmentCode-Free-v1.0.3-Portable.zip` (51.3 KB)
   - Works on Windows, Linux, macOS
   - Requires Python 3.7+
   - Extract and run startup script
 
 #### Developers
-- **Source Package**: Download `augment-tools-core-1.0.0.tar.gz` (18 KB)
-- **Wheel Package**: Download `augment_tools_core-1.0.0-py3-none-any.whl` (16 KB)
+- **Source Package**: Download `augment-tools-core-1.0.3.tar.gz` (36.0 KB)
+- **Wheel Package**: Download `augment_tools_core-1.0.3-py3-none-any.whl` (36.8 KB)
 
 ### 📋 System Requirements
 - **Python**: 3.7 or higher (for source/portable versions)
@@ -165,14 +193,14 @@ Download `checksums.txt` or `SHA256SUMS` from the release page to verify your do
 ### Method 1: GUI Interface (Recommended)
 
 #### Windows Executable
-1. Download `AugmentCode-Free-v1.0.0.exe`
+1. Download `AugmentCode-Free-v1.0.3.exe`
 2. Double-click to run
 3. Select your IDE from the dropdown
 4. Click the desired operation button
 5. Follow on-screen instructions
 
 #### Portable Version
-1. Download and extract `AugmentCode-Free-v1.0.0-Portable.zip`
+1. Download and extract `AugmentCode-Free-v1.0.3-Portable.zip`
 2. **Windows**: Double-click `Start-AugmentCode-Free.bat`
 3. **Linux/macOS**: Run `./start-augmentcode-free.sh`
 4. Use the GUI interface as described above

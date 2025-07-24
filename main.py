@@ -36,15 +36,16 @@ def main():
         print("=" * 50)
         print()
 
-        # 导入并启动GUI
-        from gui import main as gui_main
+        # 导入并启动PyQt6 GUI
+        from gui_qt6.main_window import main as gui_main
 
         print(get_text("console.gui_starting"))
         print(get_text("console.gui_tip"))
         print()
 
-        # 启动GUI
-        gui_main()
+        # 启动PyQt6 GUI
+        exit_code = gui_main()
+        sys.exit(exit_code)
 
     except ImportError as e:
         print(f"❌ 导入错误: {e}")
