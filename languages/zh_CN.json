@@ -2,7 +2,7 @@
   "app": {
     "title": "AugmentCode-Free",
     "welcome": "欢迎使用",
-    "version": "v1.0.3 - 多IDE支持版本",
+    "version": "v1.0.4 - 多IDE支持版本",
     "select_ide": "选择 IDE:",
     "language": "语言:",
     "about": "关于"

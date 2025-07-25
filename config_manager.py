@@ -14,7 +14,8 @@ class ConfigManager:
     """Manages user configuration and settings"""
     
     def __init__(self):
-        self.config_dir = Path(__file__).parent / "config"
+        # 使用绝对路径确保跨平台兼容性
+        self.config_dir = Path(__file__).resolve().parent / "config"
         self.config_file = self.config_dir / "settings.json"
         self.settings = {}
         
@@ -38,9 +39,13 @@ class ConfigManager:
     def _ensure_config_dir(self):
         """Ensure config directory exists"""
         try:
-            self.config_dir.mkdir(exist_ok=True)
+            self.config_dir.mkdir(exist_ok=True, parents=True)
+            # 在macOS上确保目录权限正确
+            if os.name == 'posix':
+                os.chmod(self.config_dir, 0o755)
         except Exception as e:
             print(f"Error creating config directory: {e}")
+            print(f"Config directory path: {self.config_dir}")
     
     def _load_settings(self):
         """Load settings from file"""

@@ -32,7 +32,8 @@ class LanguageManager:
     
     def _load_languages(self):
         """Load all available language files"""
-        languages_dir = Path(__file__).parent / "languages"
+        # 使用绝对路径确保跨平台兼容性
+        languages_dir = Path(__file__).resolve().parent / "languages"
         
         for lang_code in self.available_languages.keys():
             lang_file = languages_dir / f"{lang_code}.json"
@@ -46,6 +47,7 @@ class LanguageManager:
                     self.languages[lang_code] = {}
             else:
                 print(f"Language file not found: {lang_file}")
+                print(f"Expected path: {lang_file.resolve()}")
                 self.languages[lang_code] = {}
     
     def set_language(self, language_code: str):
