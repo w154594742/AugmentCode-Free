@@ -25,7 +25,12 @@ def clean_ide_database(ide_type: IDEType, keyword: str = "augment") -> bool:
     """
     ide_name = get_ide_display_name(ide_type)
     print_info(f"开始清理 {ide_name} 数据库 (关键字: '{keyword}')")
-    
+
+    # JetBrains 产品不需要数据库清理，直接返回成功
+    if ide_type == IDEType.JETBRAINS:
+        print_info(f"{ide_name} 产品不需要数据库清理，跳过此步骤")
+        return True
+
     paths = get_ide_paths(ide_type)
     if not paths:
         print_error(f"无法确定 {ide_name} 路径。操作中止。")
@@ -53,6 +58,30 @@ def clean_vscode_database(db_path: Path, keyword: str = "augment") -> bool:
     """
     if not db_path.exists():
         print_error(f"数据库文件未找到: {db_path}")
+        print_info("故障排除建议:")
+        print_info("1. 确保 IDE 已正确安装并至少运行过一次")
+        print_info("2. 检查 IDE 是否已完全关闭")
+        print_info("3. 验证用户权限是否足够访问配置目录")
+
+        # 检查父目录是否存在
+        parent_dir = db_path.parent
+        if parent_dir.exists():
+            print_info(f"父目录存在: {parent_dir}")
+            try:
+                files_in_parent = list(parent_dir.iterdir())
+                if files_in_parent:
+                    print_info("父目录中的文件:")
+                    for file in files_in_parent[:10]:  # 只显示前10个文件
+                        print_info(f"  - {file.name}")
+                    if len(files_in_parent) > 10:
+                        print_info(f"  ... 还有 {len(files_in_parent) - 10} 个文件")
+                else:
+                    print_warning("父目录为空")
+            except PermissionError:
+                print_warning("无法访问父目录内容 (权限不足)")
+        else:
+            print_error(f"父目录不存在: {parent_dir}")
+
         return False
 
     print_info(f"尝试清理数据库: {db_path}")

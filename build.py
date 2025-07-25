@@ -37,10 +37,10 @@ import concurrent.futures
 from contextlib import contextmanager
 
 # Build Configuration
-VERSION = "1.0.4"
+VERSION = "1.0.5"
 PROJECT_NAME = "AugmentCode-Free"
 AUTHOR = "BasicProtein"
-DESCRIPTION = "多IDE维护工具包 - 支持VS Code、Cursor、Windsurf"
+DESCRIPTION = "多IDE维护工具包 - 支持VS Code、Cursor、Windsurf、JetBrains"
 GITHUB_REPO = f"https://github.com/{AUTHOR}/{PROJECT_NAME}"
 BUILD_TIMESTAMP = datetime.now().isoformat()
 
@@ -55,15 +55,42 @@ BUILD_CONFIG = {
     "cleanup_temp": True
 }
 
-# Setup logging
+# Setup logging with proper encoding
+import io
+import codecs
+
+# 设置控制台编码
+if sys.platform.startswith('win'):
+    # Windows 系统设置控制台为 UTF-8
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
+
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
         logging.StreamHandler(sys.stdout),
-        logging.FileHandler('build.log', encoding='utf-8')
+        logging.FileHandler('build.log', encoding='utf-8', errors='replace')
     ]
 )
+
+def clean_text(text: str) -> str:
+    """清理文本中的特殊字符，确保可以安全输出"""
+    if not text:
+        return ""
+
+    # 移除或替换问题字符
+    text = text.replace('\ufffd', '?')  # 替换替换字符
+    text = text.replace('\x00', '')    # 移除空字符
+
+    # 确保可以编码为当前系统编码
+    try:
+        # 先尝试编码为 UTF-8
+        text.encode('utf-8')
+        return text
+    except UnicodeEncodeError:
+        # 如果失败，使用替换策略
+        return text.encode('utf-8', errors='replace').decode('utf-8')
 
 class BuildError(Exception):
     """Custom exception for build errors"""
@@ -84,8 +111,8 @@ class BuildLogger:
         separator = "=" * 80
         message = f"STEP {self.step_counter}: {step_name} (Elapsed: {elapsed:.2f}s)"
         # 清理消息中的特殊字符
-        clean_message = message.encode('utf-8', errors='replace').decode('utf-8')
-        clean_separator = separator.encode('utf-8', errors='replace').decode('utf-8')
+        clean_message = clean_text(message)
+        clean_separator = clean_text(separator)
         self.logger.info(f"\n{clean_separator}\n{clean_message}\n{clean_separator}")
         print(f"\n{clean_separator}")
         print(clean_message)
@@ -93,29 +120,25 @@ class BuildLogger:
     
     def success(self, message: str) -> None:
         """Log success message"""
-        # 清理消息中的特殊字符
-        clean_message = message.encode('utf-8', errors='replace').decode('utf-8')
+        clean_message = clean_text(message)
         self.logger.info(f"SUCCESS: {clean_message}")
         print(f"\033[92m[SUCCESS]\033[0m {clean_message}")
-    
+
     def error(self, message: str) -> None:
         """Log error message"""
-        # 清理消息中的特殊字符
-        clean_message = message.encode('utf-8', errors='replace').decode('utf-8')
+        clean_message = clean_text(message)
         self.logger.error(f"ERROR: {clean_message}")
         print(f"\033[91m[ERROR]\033[0m {clean_message}")
-    
+
     def info(self, message: str) -> None:
         """Log info message"""
-        # 清理消息中的特殊字符
-        clean_message = message.encode('utf-8', errors='replace').decode('utf-8')
+        clean_message = clean_text(message)
         self.logger.info(f"INFO: {clean_message}")
         print(f"→ INFO: {clean_message}")
-    
+
     def warning(self, message: str) -> None:
         """Log warning message"""
-        # 清理消息中的特殊字符
-        clean_message = message.encode('utf-8', errors='replace').decode('utf-8')
+        clean_message = clean_text(message)
         self.logger.warning(f"WARNING: {clean_message}")
         print(f"\033[93m[WARNING]\033[0m {clean_message}")
 
@@ -136,10 +159,12 @@ def run_command(cmd: str, cwd: Optional[str] = None, timeout: int = 300,
         )
         
         if result.stdout and result.stdout.strip():
-            logger.info(f"Output: {result.stdout.strip()}")
-        
+            clean_stdout = clean_text(result.stdout.strip())
+            logger.info(f"Output: {clean_stdout}")
+
         if result.stderr and result.stderr.strip():
-            logger.warning(f"Stderr: {result.stderr.strip()}")
+            clean_stderr = clean_text(result.stderr.strip())
+            logger.warning(f"Stderr: {clean_stderr}")
         
         if check and result.returncode != 0:
             error_msg = f"Command failed (code {result.returncode}): {cmd}"
@@ -386,13 +411,18 @@ a = Analysis(
     binaries=[],
     datas=[
         ('augment_tools_core', 'augment_tools_core'),
+        ('gui_qt6', 'gui_qt6'),
+        ('languages', 'languages'),
+        ('config', 'config'),
         ('README.md', '.'),
         ('requirements.txt', '.'),
     ],
     hiddenimports=[
+        'PyQt6', 'PyQt6.QtWidgets', 'PyQt6.QtCore', 'PyQt6.QtGui',
         'tkinter', 'tkinter.ttk', 'tkinter.messagebox', 'tkinter.filedialog',
         'click', 'colorama', 'pathlib', 'sqlite3', 'json', 'uuid',
-        'platform', 'subprocess', 'threading', 'queue', 'time'
+        'platform', 'subprocess', 'threading', 'queue', 'time', 'psutil',
+        'xml.etree.ElementTree', 'shutil', 'tempfile'
     ],
     hookspath=[],
     hooksconfig={{}},
@@ -610,9 +640,10 @@ $PYTHON_CMD main.py
 - Windows 7/10/11, Linux, or macOS
 
 ## Features
-- Multi-IDE Support: VS Code, Cursor, Windsurf
+- Multi-IDE Support: VS Code, Cursor, Windsurf, JetBrains
 - Database Cleaning: Remove specific IDE database entries
 - Telemetry ID Modification: Reset or change IDE telemetry identifiers
+- JetBrains SessionID Management: Automatic SessionID modification for JetBrains products
 - Process Management: Automatic IDE process detection and management
 - GUI Interface: User-friendly graphical interface
 - CLI Interface: Command-line interface for automation
@@ -718,9 +749,10 @@ class ReleaseNotesGenerator:
 {DESCRIPTION}
 
 ## New Features
-- **Multi-IDE Support**: Complete support for VS Code, Cursor, and Windsurf
+- **Multi-IDE Support**: Complete support for VS Code, Cursor, Windsurf, and JetBrains
 - **Advanced Database Cleaning**: Intelligent cleanup of IDE-specific database entries
 - **Telemetry Management**: Comprehensive telemetry ID modification and reset
+- **JetBrains SessionID Management**: Automatic SessionID modification for JetBrains products
 - **Process Management**: Automatic detection and management of running IDE processes
 - **Modern GUI**: Intuitive graphical user interface with real-time feedback
 - **CLI Interface**: Full command-line interface for automation and scripting
@@ -760,6 +792,7 @@ pip install augment-tools-core
 augment-tools --help
 augment-tools clean-db --ide vscode
 augment-tools modify-ids --ide cursor
+augment-tools modify-ids --ide jetbrains
 augment-tools run-all --ide windsurf
 ```
 

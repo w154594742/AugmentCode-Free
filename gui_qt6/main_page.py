@@ -136,11 +136,11 @@ class MainPage(QWidget):
         # IDE下拉框
         self.ide_combo = QComboBox()
         self.ide_combo.setFont(get_default_font(10))
-        self.ide_combo.addItems(["VS Code", "Cursor", "Windsurf"])
-        
+        self.ide_combo.addItems(["VS Code", "Cursor", "Windsurf", "JetBrains"])
+
         # 设置上次选择的IDE
         last_ide = self.config_manager.get_last_selected_ide()
-        if last_ide in ["VS Code", "Cursor", "Windsurf"]:
+        if last_ide in ["VS Code", "Cursor", "Windsurf", "JetBrains"]:
             self.ide_combo.setCurrentText(last_ide)
         
         ide_layout.addWidget(self.ide_combo)
@@ -339,6 +339,8 @@ class MainPage(QWidget):
             return IDEType.CURSOR
         elif ide_name == "Windsurf":
             return IDEType.WINDSURF
+        elif ide_name == "JetBrains":
+            return IDEType.JETBRAINS
         else:
             return IDEType.VSCODE  # 默认
 
@@ -431,6 +433,14 @@ class MainPage(QWidget):
         """处理清理数据库按钮点击"""
         ide_type = self.get_selected_ide_type()
         ide_name = get_ide_display_name(ide_type)
+
+        # JetBrains 产品不需要数据库清理，引导用户使用修改遥测ID功能
+        if ide_type == IDEType.JETBRAINS:
+            self._show_info_dialog(
+                get_text("dialogs.titles.jetbrains_notice"),
+                get_text("dialogs.messages.jetbrains_db_notice", ide_name=ide_name)
+            )
+            return
 
         # 检查IDE是否正在运行
         if self._is_ide_running(ide_type):

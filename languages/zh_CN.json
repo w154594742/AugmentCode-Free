@@ -2,7 +2,7 @@
   "app": {
     "title": "AugmentCode-Free",
     "welcome": "欢迎使用",
-    "version": "v1.0.4 - 多IDE支持版本",
+    "version": "v1.0.5 - 多IDE支持版本",
     "select_ide": "选择 IDE:",
     "language": "语言:",
     "about": "关于"
@@ -27,7 +27,8 @@
       "ide_running": "{ide_name}正在运行",
       "about_title": "关于 AugmentCode-Free",
       "welcome_title": "欢迎使用 AugmentCode-Free",
-      "language_selection": "选择语言"
+      "language_selection": "选择语言",
+      "jetbrains_notice": "JetBrains 产品提示"
     },
     "messages": {
       "close_warning": "• 若有未保存的内容请先进行保存\n• {ide_name}中需要备份的聊天记录请先备份\n\n确认无误后才能关闭{ide_name}。\n\n是否继续关闭{ide_name}？",
@@ -37,7 +38,8 @@
       "ide_running_warning": "检测到{ide_name}正在运行！\n\n请先关闭{ide_name}再进行操作。\n您可以点击\"关闭选中的IDE\"按钮。",
       "welcome_message": "欢迎使用 AugmentCode-Free！\n\n这是一个开源免费的IDE维护工具，支持VS Code、Cursor和Windsurf。\n\n请选择您的首选语言：",
       "first_run_warning": "⚠️ 重要提示：\n\n本项目完全开源免费！\n如果有人向您收费，请立即联系销售方退款并举报诈骗行为。\n\n项目地址：https://github.com/BasicProtein/AugmentCode-Free",
-      "continue_text": "已阅读"
+      "continue_text": "已阅读",
+      "jetbrains_db_notice": "{ide_name} 产品不需要数据库清理。\n\n请使用\"修改IDE遥测ID\"功能来修改 SessionID。"
     }
   },
   "status": {
@@ -75,11 +77,11 @@
     "interrupted": "应用程序被用户中断"
   },
   "cli": {
-    "description": "AugmentCode-Free: 多IDE维护工具。提供清理IDE数据库和修改遥测ID的实用程序。支持VS Code、Cursor和Windsurf。",
+    "description": "AugmentCode-Free: 多IDE维护工具。提供清理IDE数据库和修改遥测ID的实用程序。支持VS Code、Cursor、Windsurf和JetBrains。",
     "clean_db_help": "通过删除匹配关键字的条目来清理指定IDE的状态数据库。",
     "modify_ids_help": "修改指定IDE在storage.json中的遥测ID（machineId、devDeviceId）。",
     "run_all_help": "为指定IDE运行所有可用工具：clean-db然后modify-ids。",
-    "ide_option_help": "要处理的IDE (vscode, cursor, windsurf)",
+    "ide_option_help": "要处理的IDE (vscode, cursor, windsurf, jetbrains)",
     "keyword_option_help": "要从数据库中搜索和删除的关键字（不区分大小写）。",
     "keyword_clean_help": "数据库清理的关键字（不区分大小写）。",
     "executing": "执行中：{operation}",
@@ -89,6 +91,6 @@
     "error_occurred": "在{step}步骤中发生错误: {error}",
     "proceeding": "尽管出现错误，仍继续下一步。",
     "all_finished": "{ide_name}的所有工具已完成执行序列。",
-    "unsupported_ide": "不支持的IDE: {ide}。支持的IDE: vscode, cursor, windsurf"
+    "unsupported_ide": "不支持的IDE: {ide}。支持的IDE: vscode, cursor, windsurf, jetbrains"
   }
 }

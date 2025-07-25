@@ -38,6 +38,8 @@ def parse_ide_type(ide_name: str) -> IDEType:
         return IDEType.CURSOR
     elif ide_name_lower in ['windsurf']:
         return IDEType.WINDSURF
+    elif ide_name_lower in ['jetbrains', 'pycharm', 'intellij', 'idea', 'webstorm', 'phpstorm']:
+        return IDEType.JETBRAINS
     else:
         raise click.BadParameter(get_text("cli.unsupported_ide", ide=ide_name))
 

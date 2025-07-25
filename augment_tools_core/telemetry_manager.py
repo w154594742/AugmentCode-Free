@@ -7,6 +7,7 @@ from .common_utils import (
     generate_new_machine_id, generate_new_device_id,
     IDEType, get_ide_paths, get_ide_display_name
 )
+from .jetbrains_manager import modify_all_jetbrains_session_ids
 
 def modify_ide_telemetry_ids(ide_type: IDEType) -> bool:
     """
@@ -20,17 +21,21 @@ def modify_ide_telemetry_ids(ide_type: IDEType) -> bool:
     """
     ide_name = get_ide_display_name(ide_type)
     print_info(f"开始修改 {ide_name} 遥测 ID")
-    
+
+    # JetBrains 产品使用不同的处理方式
+    if ide_type == IDEType.JETBRAINS:
+        return modify_all_jetbrains_session_ids()
+
     paths = get_ide_paths(ide_type)
     if not paths:
         print_error(f"无法确定 {ide_name} 路径。操作中止。")
         return False
-    
+
     storage_path = paths.get("storage_json")
     if not storage_path:
         print_error(f"在配置中未找到 {ide_name} storage.json 路径。操作中止。")
         return False
-    
+
     return modify_vscode_telemetry_ids(storage_path)
 
 def modify_vscode_telemetry_ids(storage_json_path: Path) -> bool:
@@ -47,6 +52,30 @@ def modify_vscode_telemetry_ids(storage_json_path: Path) -> bool:
 
     if not storage_json_path.exists():
         print_error(f"存储文件未找到: {storage_json_path}")
+        print_info("故障排除建议:")
+        print_info("1. 确保 IDE 已正确安装并至少运行过一次")
+        print_info("2. 检查 IDE 是否已完全关闭")
+        print_info("3. 验证用户权限是否足够访问配置目录")
+
+        # 检查父目录是否存在
+        parent_dir = storage_json_path.parent
+        if parent_dir.exists():
+            print_info(f"父目录存在: {parent_dir}")
+            try:
+                files_in_parent = list(parent_dir.iterdir())
+                if files_in_parent:
+                    print_info("父目录中的文件:")
+                    for file in files_in_parent[:10]:  # 只显示前10个文件
+                        print_info(f"  - {file.name}")
+                    if len(files_in_parent) > 10:
+                        print_info(f"  ... 还有 {len(files_in_parent) - 10} 个文件")
+                else:
+                    print_warning("父目录为空")
+            except PermissionError:
+                print_warning("无法访问父目录内容 (权限不足)")
+        else:
+            print_error(f"父目录不存在: {parent_dir}")
+
         return False
 
     backup_path = create_backup(storage_json_path)

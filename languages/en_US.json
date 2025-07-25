@@ -2,7 +2,7 @@
   "app": {
     "title": "AugmentCode-Free",
     "welcome": "Welcome",
-    "version": "v1.0.4 - Multi-IDE Support",
+    "version": "v1.0.5 - Multi-IDE Support",
     "select_ide": "Select IDE:",
     "language": "Language:",
     "about": "About"
@@ -27,7 +27,8 @@
       "ide_running": "{ide_name} is Running",
       "about_title": "About AugmentCode-Free",
       "welcome_title": "Welcome to AugmentCode-Free",
-      "language_selection": "Select Language"
+      "language_selection": "Select Language",
+      "jetbrains_notice": "JetBrains Product Notice"
     },
     "messages": {
       "close_warning": "• Please save any unsaved content first\n• Backup important chat records in {ide_name}\n\nConfirm everything is ready before closing {ide_name}.\n\nContinue to close {ide_name}?",
@@ -37,7 +38,8 @@
       "ide_running_warning": "Detected {ide_name} is running!\n\nPlease close {ide_name} before proceeding.\nYou can click \"Close Selected IDE\" button.",
       "welcome_message": "Welcome to AugmentCode-Free!\n\nThis is an open source and free IDE maintenance tool that supports VS Code, Cursor, and Windsurf.\n\nPlease select your preferred language:",
       "first_run_warning": "⚠️ Important Notice:\n\nThis project is completely open source and free!\nIf someone charges you, please contact the seller for a refund immediately and report the fraud.\n\nProject URL: https://github.com/BasicProtein/AugmentCode-Free",
-      "continue_text": "I have read"
+      "continue_text": "I have read",
+      "jetbrains_db_notice": "{ide_name} products do not require database cleaning.\n\nPlease use \"Modify IDE Telemetry ID\" function to modify SessionID."
     }
   },
   "status": {
@@ -75,11 +77,11 @@
     "interrupted": "Application interrupted by user"
   },
   "cli": {
-    "description": "AugmentCode-Free: Multi-IDE Maintenance Tools. Provides utilities for cleaning IDE databases and modifying telemetry IDs. Supports VS Code, Cursor, and Windsurf.",
+    "description": "AugmentCode-Free: Multi-IDE Maintenance Tools. Provides utilities for cleaning IDE databases and modifying telemetry IDs. Supports VS Code, Cursor, Windsurf, and JetBrains.",
     "clean_db_help": "Cleans the specified IDE's state database by removing entries matching the keyword.",
     "modify_ids_help": "Modifies the specified IDE's telemetry IDs (machineId, devDeviceId) in storage.json.",
     "run_all_help": "Runs all available tools for the specified IDE: clean-db and then modify-ids.",
-    "ide_option_help": "IDE to process (vscode, cursor, windsurf)",
+    "ide_option_help": "IDE to process (vscode, cursor, windsurf, jetbrains)",
     "keyword_option_help": "Keyword to search for and remove from the database (case-insensitive).",
     "keyword_clean_help": "Keyword for database cleaning (case-insensitive).",
     "executing": "Executing: {operation}",
@@ -89,6 +91,6 @@
     "error_occurred": "An error occurred during {step} step: {error}",
     "proceeding": "Proceeding to the next step despite the error.",
     "all_finished": "All tools for {ide_name} have finished their execution sequence.",
-    "unsupported_ide": "Unsupported IDE: {ide}. Supported: vscode, cursor, windsurf"
+    "unsupported_ide": "Unsupported IDE: {ide}. Supported: vscode, cursor, windsurf, jetbrains"
   }
 }

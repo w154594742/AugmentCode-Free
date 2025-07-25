@@ -129,3 +129,85 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+# ===== Project Specific =====
+
+# AI Memory and Privacy Files
+.cunzhi-memory/
+.augment/
+*.memory
+*.session
+*.cache
+
+# Build and Distribution
+build.log
+portable_temp/
+*.exe
+*.dmg
+*.AppImage
+*.deb
+*.rpm
+
+# IDE and Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Configuration and Secrets
+config/user_config.json
+config/secrets.json
+*.key
+*.pem
+*.p12
+*.pfx
+api_keys.txt
+secrets.txt
+
+# User Data and Logs
+user_data/
+logs/
+*.log
+crash_reports/
+debug_*.txt
+
+# Backup Files
+*.bak
+*.backup
+*.old
+*_backup
+*_old
+
+# Temporary Files
+temp/
+tmp/
+*.tmp
+*.temp
+
+# OS Generated Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Development and Testing
+test_output/
+test_results/
+coverage_reports/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Personal Notes and Documentation
+NOTES.md
+TODO.md
+PERSONAL_*
+PRIVATE_*
+*_PRIVATE.*
+*_PERSONAL.*

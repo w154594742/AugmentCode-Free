@@ -1,17 +1,29 @@
-# AugmentCode-Free v1.0.4
+# AugmentCode-Free v1.0.5
 
-#AugmentCode无限免费续杯方案；新账号可获得600次免费的Claude Sonnet 4调用
+# AugmentCode无限免费续杯方案；新账号可获得600次免费的Claude Sonnet 4调用
 
-#AugmentCode unlimited free refill plan; new accounts can get 600 free Claude Sonnet 4 calls
+# AugmentCode unlimited free refill plan; new accounts can get 600 free Claude Sonnet 4 calls
 
-**支持多IDE**: VS Code、Cursor、Windsurf 的专业维护工具包
+**支持多IDE**: VS Code、Cursor、Windsurf、JetBrains 的专业维护工具包
 
-**Multi-IDE Support**: Maintenance toolkit for VS Code, Cursor, and Windsurf
+**Multi-IDE Support**: Maintenance toolkit for VS Code, Cursor, Windsurf, and JetBrains
 
 [![GitHub release](https://img.shields.io/github/v/release/BasicProtein/AugmentCode-Free)](https://github.com/BasicProtein/AugmentCode-Free/releases)
 [![Python](https://img.shields.io/badge/Python-3.7+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)](https://github.com/BasicProtein/AugmentCode-Free)
+
+#### 2025年7月25日更新 (v1.0.5)：
+
+**🚀 JetBrains 支持**：
+- 新增对 JetBrains 系列产品的支持（PyCharm、IntelliJ IDEA、WebStorm、PhpStorm等）
+- 实现 SessionID 自动修改功能，支持跨平台路径检测
+- 智能配置文件备份和用户设置保护机制
+
+**🔧 功能优化**：
+- 改进"一键修改所有配置"工作流程，确保 JetBrains 产品正常运行
+- 完善多语言支持，修复英文界面下的文本显示问题
+- 优化用户提示信息，为不同IDE类型提供针对性指导
 
 #### 2025年7月25日更新 (v1.0.4)：
 
@@ -37,6 +49,18 @@
 **📦 发布改进**：
 - 优化了构建流程，生成更完整的发布包
 - 改进了错误信息显示，使用颜色区分不同类型的消息
+
+#### July 25, 2025 Update (v1.0.5):
+
+**🚀 JetBrains Support**:
+- Added support for JetBrains product series (PyCharm, IntelliJ IDEA, WebStorm, PhpStorm, etc.)
+- Implemented automatic SessionID modification with cross-platform path detection
+- Smart configuration file backup and user settings protection mechanism
+
+**🔧 Feature Optimization**:
+- Improved "Modify All Configurations" workflow to ensure JetBrains products work properly
+- Enhanced multi-language support, fixed text display issues in English interface
+- Optimized user prompts with targeted guidance for different IDE types
 
 #### July 25, 2025 Update (v1.0.4):
 
@@ -110,7 +134,7 @@ At dawn on July 23, 2025, the official invitation policy was modified:
 # AugmentCode-Free
 AugmentCode unlimited free refill plan; new accounts can get 600 free Claude Sonnet 4 calls
 
-**Multi-IDE Support**: Maintenance toolkit for VS Code, Cursor, and Windsurf
+**Multi-IDE Support**: Maintenance toolkit for VS Code, Cursor, Windsurf, and JetBrains
 
 Updated on June 18, 2025:
 
@@ -143,19 +167,20 @@ Summary: The primary account can be any account, even if it is blocked. The prim
 
 # AugmentCode-Free (English)
 
-**AugmentCode-Free** is a Python-based toolkit, now featuring a modern **Graphical User Interface (GUI)** alongside its command-line interface. It's designed to provide maintenance and tweaking utilities for multiple IDEs including VS Code, Cursor, and Windsurf, helping users manage aspects like telemetry and local cache.
+**AugmentCode-Free** is a Python-based toolkit, now featuring a modern **Graphical User Interface (GUI)** alongside its command-line interface. It's designed to provide maintenance and tweaking utilities for multiple IDEs including VS Code, Cursor, Windsurf, and JetBrains, helping users manage aspects like telemetry, SessionID, and local cache.
 
 ## Features
 
 ### Core Functionality (Available in CLI & GUI)
 -   **Multi-IDE Database Cleaning**: Cleans specific entries from VS Code, Cursor, and Windsurf local databases.
 -   **Multi-IDE Telemetry ID Modification**: Helps in resetting or changing telemetry identifiers stored by supported IDEs.
+-   **JetBrains SessionID Management**: Automatically modifies SessionID for JetBrains products (PyCharm, IntelliJ IDEA, WebStorm, etc.).
 -   **Smart Process Detection**: Automatically detects and manages running IDE processes.
 
 ### New GUI Features
 -   **Intuitive Interface**: A user-friendly graphical alternative to command-line operations.
--   **IDE Selection**: Choose between VS Code, Cursor, and Windsurf from a dropdown menu.
--   **One-Click Operations**: Easily perform tasks like modifying IDE telemetry IDs and cleaning IDE databases with a single click.
+-   **IDE Selection**: Choose between VS Code, Cursor, Windsurf, and JetBrains from a dropdown menu.
+-   **One-Click Operations**: Easily perform tasks like modifying IDE telemetry IDs, JetBrains SessionID, and cleaning IDE databases with a single click.
 -   **Process Management**: Automatically detects and offers to close running IDE instances to ensure operations proceed smoothly.
 -   **User Feedback**: Provides clear confirmation dialogs and status messages for all operations.
 -   **Modern Design**: Features animated interface elements and intuitive user experience.
@@ -178,20 +203,20 @@ pip install -r requirements.txt
 ### Option 2: Standalone Downloads
 
 #### Windows Users
-- **Executable**: Download `AugmentCode-Free-v1.0.4.exe` (34.5 MB)
+- **Executable**: Download `AugmentCode-Free-v1.0.5.exe` (34.5 MB)
   - No Python installation required
   - Double-click to run
   - Includes all dependencies
 
 #### Cross-Platform Users
-- **Portable Package**: Download `AugmentCode-Free-v1.0.4-Portable.zip` (51.3 KB)
+- **Portable Package**: Download `AugmentCode-Free-v1.0.5-Portable.zip` (51.3 KB)
   - Works on Windows, Linux, macOS
   - Requires Python 3.7+
   - Extract and run startup script
 
 #### Developers
-- **Source Package**: Download `augment-tools-core-1.0.4.tar.gz` (36.0 KB)
-- **Wheel Package**: Download `augment_tools_core-1.0.4-py3-none-any.whl` (36.8 KB)
+- **Source Package**: Download `augment-tools-core-1.0.5.tar.gz` (36.0 KB)
+- **Wheel Package**: Download `augment_tools_core-1.0.5-py3-none-any.whl` (36.8 KB)
 
 ### 📋 System Requirements
 - **Python**: 3.7 or higher (for source/portable versions)
@@ -215,14 +240,14 @@ Download `checksums.txt` or `SHA256SUMS` from the release page to verify your do
 ### Method 1: GUI Interface (Recommended)
 
 #### Windows Executable
-1. Download `AugmentCode-Free-v1.0.4.exe`
+1. Download `AugmentCode-Free-v1.0.5.exe`
 2. Double-click to run
 3. Select your IDE from the dropdown
 4. Click the desired operation button
 5. Follow on-screen instructions
 
 #### Portable Version
-1. Download and extract `AugmentCode-Free-v1.0.4-Portable.zip`
+1. Download and extract `AugmentCode-Free-v1.0.5-Portable.zip`
 2. **Windows**: Double-click `Start-AugmentCode-Free.bat`
 3. **Linux/macOS**: Run `./start-augmentcode-free.sh`
 4. Use the GUI interface as described above
@@ -253,15 +278,17 @@ augment-tools clean-db --ide vscode
 augment-tools clean-db --ide cursor
 augment-tools clean-db --ide windsurf
 
-# Modify telemetry IDs
+# Modify telemetry IDs / SessionID
 augment-tools modify-ids --ide vscode
 augment-tools modify-ids --ide cursor
 augment-tools modify-ids --ide windsurf
+augment-tools modify-ids --ide jetbrains
 
 # Run all operations (clean + modify)
 augment-tools run-all --ide vscode
 augment-tools run-all --ide cursor
 augment-tools run-all --ide windsurf
+augment-tools run-all --ide jetbrains
 ```
 
 -   **Directly (for development/advanced use, from project root):**
@@ -276,19 +303,20 @@ Use these tools at your own risk. Always back up important data before running m
 
 # AugmentCode-Free (中文)
 
-**AugmentCode-Free** 是一个基于 Python 的工具包，现已配备现代化的**图形用户界面 (GUI)** 以及原有的命令行界面。它旨在为多个IDE（包括 VS Code、Cursor 和 Windsurf）提供维护和调整实用程序，帮助用户管理遥测数据和本地缓存等方面。
+**AugmentCode-Free** 是一个基于 Python 的工具包，现已配备现代化的**图形用户界面 (GUI)** 以及原有的命令行界面。它旨在为多个IDE（包括 VS Code、Cursor、Windsurf 和 JetBrains）提供维护和调整实用程序，帮助用户管理遥测数据、SessionID 和本地缓存等方面。
 
 ## 功能特性
 
 ### 核心功能 (命令行及GUI均可用)
 -   **多IDE数据库清理**: 清理 VS Code、Cursor、Windsurf 本地数据库中的特定条目。
 -   **多IDE遥测ID修改**: 帮助重置或更改支持的IDE存储的遥测标识符。
+-   **JetBrains SessionID管理**: 自动修改 JetBrains 系列产品的 SessionID（PyCharm、IntelliJ IDEA、WebStorm等）。
 -   **智能进程检测**: 自动检测和管理正在运行的IDE进程。
 
 ### 全新 GUI 特性
 -   **直观界面**: 提供用户友好的图形操作界面，作为命令行的替代选择。
--   **IDE选择**: 通过下拉菜单在 VS Code、Cursor 和 Windsurf 之间选择。
--   **一键式操作**: 通过单击即可轻松执行修改IDE遥测ID、清理IDE数据库等任务。
+-   **IDE选择**: 通过下拉菜单在 VS Code、Cursor、Windsurf 和 JetBrains 之间选择。
+-   **一键式操作**: 通过单击即可轻松执行修改IDE遥测ID、JetBrains SessionID、清理IDE数据库等任务。
 -   **进程管理**: 自动检测并提示关闭正在运行的IDE实例，以确保操作顺利进行。
 -   **用户反馈**: 为所有操作提供清晰的确认对话框和状态消息。
 -   **现代化设计**: 具有动画界面元素和直观的用户体验。
@@ -351,13 +379,16 @@ GUI 为所有功能提供了简单易用的操作界面。
     
     # 清理 VS Code 数据库
     augment-tools clean-db --ide vscode
-    
+
     # 清理 Cursor 数据库
     augment-tools clean-db --ide cursor
-    
+
     # 修改 Windsurf 遥测ID
     augment-tools modify-ids --ide windsurf
-    
+
+    # 修改 JetBrains SessionID
+    augment-tools modify-ids --ide jetbrains
+
     # 为 VS Code 运行所有工具
     augment-tools run-all --ide vscode
     ```
