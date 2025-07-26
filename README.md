@@ -13,6 +13,23 @@
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)](https://github.com/BasicProtein/AugmentCode-Free)
 
+
+
+#### 2025年7月26日更新：
+
+- AugmentCode官方于7月24日更新新用户试用规则，新用户免费试用7天，调用次数变为125次
+- 7月26日官方封控加强，限制无限邮箱+部分国内邮箱，建议使用自定义邮箱或者主流邮箱
+- 本项目目前依旧正常运行中，如若未来更改规则，无法使用本工具，会通告各位用户，希望各位用户且用且珍惜
+- 再次提醒使用本工具前关闭所有有关进程，退出账号，同时邀请策略部分用户已经失效
+
+#### Updated on July 26, 2025:
+
+- AugmentCode officially updated the new user trial rules on July 24, and new users can try for free for 7 days, and the number of calls has been changed to 125 times
+- On July 26, the official blockade was strengthened, limiting unlimited mailboxes + some domestic mailboxes. It is recommended to use custom mailboxes or mainstream mailboxes
+- This project is still running normally. If the rules are changed in the future and this tool cannot be used, we will notify all users. I hope that all users will use it and cherish it
+- Once again remind you to close all related processes and log out of the account before using this tool. At the same time, the invitation policy has expired for some users
+
+
 #### 2025年7月25日更新 (v1.0.5)：
 
 **🚀 JetBrains 支持**：
