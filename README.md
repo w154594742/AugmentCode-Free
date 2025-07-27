@@ -2,6 +2,7 @@
 # Telegram Communication Group
 
 https://t.me/+rL2-my2wYy5hODA1
+![0d0f761c0d09056358a24766f806802](https://github.com/user-attachments/assets/64c8cb5d-7989-4c8e-808b-0b72b6cc9cc8)
 
 AugmentCode无限免费续杯方案；新账号可获得600次免费的Claude Sonnet 4调用
 
