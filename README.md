@@ -3,6 +3,11 @@
 # AugmentCode无限免费续杯方案；新账号可获得600次免费的Claude Sonnet 4调用
 AugmentCode unlimited free refill plan; new accounts can get 600 free Claude Sonnet 4 calls
 
+# 使用工具后隔了半小时或者几个小时后封号，这种情况一般与网络环境也有关，与本工具无关，因为本项目原理无非是伪装成新用户无限合法使用
+If the account is blocked half an hour or several hours after using the tool, this situation is generally related to the network environment and has nothing to do with this tool, because the principle of this project is nothing more than pretending to be a new user and using it legally indefinitely.
+
+
+
 **支持多IDE**: VS Code、Cursor、Windsurf、JetBrains 的专业维护工具包
 
 **Multi-IDE Support**: Maintenance toolkit for VS Code, Cursor, Windsurf, and JetBrains
@@ -18,6 +23,8 @@ AugmentCode unlimited free refill plan; new accounts can get 600 free Claude Son
 - Alright, here's the deal. The new back-end workaround? We ran a little test, and boom, it works. We're thinking about dropping it, maybe when the time's right. But here's the kicker: this thing totally screws over the main guys, I mean, it's messing with their whole operation, big time. So, yeah, we gotta think this through. This ain't no joke.
 - 目前邀请策略已经接近全面失效，可以通过换号+清理环境方式无限使用
 - The current invitation strategy is almost completely ineffective. You can use it unlimitedly by changing your account number and cleaning up the environment.
+- 使用工具后隔了半小时或者几个小时后封号，这种情况一般与网络环境也有关，与本工具无关，因为本项目原理无非是伪装成新用户无限合法使用
+- If the account is blocked half an hour or several hours after using the tool, this situation is generally related to the network environment and has nothing to do with this tool, because the principle of this project is nothing more than pretending to be a new user and using it legally indefinitely.
 
 <img width="828" height="565" alt="image" src="https://github.com/user-attachments/assets/af42e76a-d438-4c80-890a-7fec1dc338f9" />
 
