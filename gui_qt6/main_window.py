@@ -158,7 +158,7 @@ class AugmentCodeApp:
             
             # 设置应用程序属性
             self.app.setApplicationName("AugmentCode-Free")
-            self.app.setApplicationVersion("1.0.3")
+            self.app.setApplicationVersion("1.0.6")
             self.app.setOrganizationName("AugmentCode-Free Team")
             
             # 启用高DPI支持 (PyQt6兼容性修复)
