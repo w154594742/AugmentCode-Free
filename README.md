@@ -1,8 +1,7 @@
 # AugmentCode-Free v1.0.5
 
 # AugmentCode无限免费续杯方案；新账号可获得600次免费的Claude Sonnet 4调用
-
-# AugmentCode unlimited free refill plan; new accounts can get 600 free Claude Sonnet 4 calls
+AugmentCode unlimited free refill plan; new accounts can get 600 free Claude Sonnet 4 calls
 
 **支持多IDE**: VS Code、Cursor、Windsurf、JetBrains 的专业维护工具包
 
@@ -12,6 +11,15 @@
 [![Python](https://img.shields.io/badge/Python-3.7+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)](https://github.com/BasicProtein/AugmentCode-Free)
+
+
+#### 2025年7月27日更新：
+- 目前最新逆向思路已经小范围测试成功；未来可能在合适时机发布；但是该逆向方式已经严重侵害了官方的正常运行权益，需要慎重考虑
+- Alright, here's the deal. The new back-end workaround? We ran a little test, and boom, it works. We're thinking about dropping it, maybe when the time's right. But here's the kicker: this thing totally screws over the main guys, I mean, it's messing with their whole operation, big time. So, yeah, we gotta think this through. This ain't no joke.
+- 目前邀请策略已经接近全面失效，可以通过换号+清理环境方式无限使用
+- The current invitation strategy is almost completely ineffective. You can use it unlimitedly by changing your account number and cleaning up the environment.
+
+<img width="828" height="565" alt="image" src="https://github.com/user-attachments/assets/af42e76a-d438-4c80-890a-7fec1dc338f9" />
 
 
 
