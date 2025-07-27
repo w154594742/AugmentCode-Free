@@ -4,6 +4,7 @@
 https://t.me/+rL2-my2wYy5hODA1
 
 AugmentCode无限免费续杯方案；新账号可获得600次免费的Claude Sonnet 4调用
+
 AugmentCode unlimited free refill plan; new accounts can get 600 free Claude Sonnet 4 calls
 
 # 使用工具后隔了半小时或者几个小时后封号，这种情况一般与网络环境也有关，与本工具无关，因为本项目原理无非是伪装成新用户无限合法使用
