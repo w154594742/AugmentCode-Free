@@ -1,10 +1,10 @@
-# AugmentCode-Free v1.0.5 构建说明 / Build Instructions
+# AugmentCode-Free v1.0.6 构建说明 / Build Instructions
 
 ## Windows 平台 ✅ 已完成 / Windows Platform ✅ Completed
 
 已成功构建 / Successfully built:
-- `AugmentCode-Free-v1.0.5.exe` (36.9 MB) - Windows 可执行文件 / Windows executable
-- `AugmentCode-Free-v1.0.5-Portable.zip` (59 KB) - 跨平台便携包 / Cross-platform portable package
+- `AugmentCode-Free-v1.0.6.exe` (36.9 MB) - Windows 可执行文件 / Windows executable
+- `AugmentCode-Free-v1.0.6-Portable.zip` (59 KB) - 跨平台便携包 / Cross-platform portable package
 
 ## macOS 平台构建 / macOS Platform Build
 
@@ -16,7 +16,7 @@ pip install pyinstaller PyQt6 psutil click colorama
 
 # 构建 macOS 应用 / Build macOS application
 pyinstaller --onefile --windowed \
-    --name AugmentCode-Free-v1.0.5 \
+    --name AugmentCode-Free-v1.0.6 \
     --distpath dist \
     --add-data "augment_tools_core:augment_tools_core" \
     --add-data "gui_qt6:gui_qt6" \
@@ -34,14 +34,14 @@ pyinstaller --onefile --windowed \
 # 需要安装 create-dmg: brew install create-dmg
 # Requires create-dmg: brew install create-dmg
 create-dmg \
-    --volname "AugmentCode-Free v1.0.5" \
+    --volname "AugmentCode-Free v1.0.6" \
     --window-pos 200 120 \
     --window-size 600 300 \
     --icon-size 100 \
-    --icon "AugmentCode-Free-v1.0.5.app" 175 120 \
-    --hide-extension "AugmentCode-Free-v1.0.5.app" \
+    --icon "AugmentCode-Free-v1.0.6.app" 175 120 \
+    --hide-extension "AugmentCode-Free-v1.0.6.app" \
     --app-drop-link 425 120 \
-    "AugmentCode-Free-v1.0.5.dmg" \
+    "AugmentCode-Free-v1.0.6.dmg" \
     "dist/"
 ```
 
@@ -66,7 +66,7 @@ pip install pyinstaller PyQt6 psutil click colorama
 
 # 构建 Linux 可执行文件 / Build Linux executable
 pyinstaller --onefile \
-    --name AugmentCode-Free-v1.0.5 \
+    --name AugmentCode-Free-v1.0.6 \
     --distpath dist \
     --add-data "augment_tools_core:augment_tools_core" \
     --add-data "gui_qt6:gui_qt6" \
@@ -91,14 +91,14 @@ mkdir -p AugmentCode-Free.AppDir/usr/share/applications
 mkdir -p AugmentCode-Free.AppDir/usr/share/icons/hicolor/256x256/apps
 
 # 复制可执行文件 / Copy executable
-cp dist/AugmentCode-Free-v1.0.5 AugmentCode-Free.AppDir/usr/bin/
+cp dist/AugmentCode-Free-v1.0.6 AugmentCode-Free.AppDir/usr/bin/
 
 # 创建 .desktop 文件 / Create .desktop file
 cat > AugmentCode-Free.AppDir/AugmentCode-Free.desktop << EOF
 [Desktop Entry]
 Type=Application
 Name=AugmentCode-Free
-Exec=AugmentCode-Free-v1.0.5
+Exec=AugmentCode-Free-v1.0.6
 Icon=augmentcode-free
 Categories=Development;
 EOF
@@ -107,12 +107,12 @@ EOF
 cat > AugmentCode-Free.AppDir/AppRun << EOF
 #!/bin/bash
 cd "\$(dirname "\$0")"
-exec ./usr/bin/AugmentCode-Free-v1.0.5 "\$@"
+exec ./usr/bin/AugmentCode-Free-v1.0.6 "\$@"
 EOF
 chmod +x AugmentCode-Free.AppDir/AppRun
 
 # 构建 AppImage / Build AppImage
-./appimagetool-x86_64.AppImage AugmentCode-Free.AppDir AugmentCode-Free-v1.0.5-x86_64.AppImage
+./appimagetool-x86_64.AppImage AugmentCode-Free.AppDir AugmentCode-Free-v1.0.6-x86_64.AppImage
 ```
 
 ## 构建验证 / Build Verification
@@ -133,16 +133,16 @@ chmod +x AugmentCode-Free.AppDir/AppRun
 每个平台需要提供 / Each platform should provide:
 
 - **Windows**:
-  - `AugmentCode-Free-v1.0.5.exe` ✅
-  - `AugmentCode-Free-v1.0.5-Portable.zip` ✅
+  - `AugmentCode-Free-v1.0.6.exe` ✅
+  - `AugmentCode-Free-v1.0.6-Portable.zip` ✅
 
 - **macOS**:
-  - `AugmentCode-Free-v1.0.5.app` (或 .dmg / or .dmg)
+  - `AugmentCode-Free-v1.0.6.app` (或 .dmg / or .dmg)
   - 便携包已包含在 Windows 构建中 / Portable package included in Windows build
 
 - **Linux**:
-  - `AugmentCode-Free-v1.0.5` (可执行文件 / executable)
-  - `AugmentCode-Free-v1.0.5-x86_64.AppImage` (可选 / optional)
+  - `AugmentCode-Free-v1.0.6` (可执行文件 / executable)
+  - `AugmentCode-Free-v1.0.6-x86_64.AppImage` (可选 / optional)
   - 便携包已包含在 Windows 构建中 / Portable package included in Windows build
 
 ## 注意事项 / Important Notes

@@ -1,4 +1,4 @@
-# AugmentCode-Free v1.0.5
+# AugmentCode-Free v1.0.6
 # Telegram Communication Group
 
 https://t.me/+rL2-my2wYy5hODA1
@@ -22,7 +22,14 @@ If the account is blocked half an hour or several hours after using the tool, th
 [![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)](https://github.com/BasicProtein/AugmentCode-Free)
 
 
-#### 2025年7月27日更新：
+#### 2025年7月27日更新 (v1.0.6)：
+
+**🔧 macOS路径修正**：
+- 修正了Cursor在macOS上的路径配置问题
+- 统一了所有IDE在macOS上的标准应用数据存储路径
+- 确保清理工具能够正确定位Cursor数据文件
+
+**📢 重要更新**：
 - 目前最新逆向思路已经小范围测试成功；未来可能在合适时机发布；但是该逆向方式已经严重侵害了官方的正常运行权益，需要慎重考虑
 - Alright, here's the deal. The new back-end workaround? We ran a little test, and boom, it works. We're thinking about dropping it, maybe when the time's right. But here's the kicker: this thing totally screws over the main guys, I mean, it's messing with their whole operation, big time. So, yeah, we gotta think this through. This ain't no joke.
 - 目前邀请策略已经接近全面失效，可以通过换号+清理环境方式无限使用
@@ -239,20 +246,20 @@ pip install -r requirements.txt
 ### Option 2: Standalone Downloads
 
 #### Windows Users
-- **Executable**: Download `AugmentCode-Free-v1.0.5.exe` (34.5 MB)
+- **Executable**: Download `AugmentCode-Free-v1.0.6.exe` (34.5 MB)
   - No Python installation required
   - Double-click to run
   - Includes all dependencies
 
 #### Cross-Platform Users
-- **Portable Package**: Download `AugmentCode-Free-v1.0.5-Portable.zip` (51.3 KB)
+- **Portable Package**: Download `AugmentCode-Free-v1.0.6-Portable.zip` (51.3 KB)
   - Works on Windows, Linux, macOS
   - Requires Python 3.7+
   - Extract and run startup script
 
 #### Developers
-- **Source Package**: Download `augment-tools-core-1.0.5.tar.gz` (36.0 KB)
-- **Wheel Package**: Download `augment_tools_core-1.0.5-py3-none-any.whl` (36.8 KB)
+- **Source Package**: Download `augment-tools-core-1.0.6.tar.gz` (36.0 KB)
+- **Wheel Package**: Download `augment_tools_core-1.0.6-py3-none-any.whl` (36.8 KB)
 
 ### 📋 System Requirements
 - **Python**: 3.7 or higher (for source/portable versions)
@@ -276,14 +283,14 @@ Download `checksums.txt` or `SHA256SUMS` from the release page to verify your do
 ### Method 1: GUI Interface (Recommended)
 
 #### Windows Executable
-1. Download `AugmentCode-Free-v1.0.5.exe`
+1. Download `AugmentCode-Free-v1.0.6.exe`
 2. Double-click to run
 3. Select your IDE from the dropdown
 4. Click the desired operation button
 5. Follow on-screen instructions
 
 #### Portable Version
-1. Download and extract `AugmentCode-Free-v1.0.5-Portable.zip`
+1. Download and extract `AugmentCode-Free-v1.0.6-Portable.zip`
 2. **Windows**: Double-click `Start-AugmentCode-Free.bat`
 3. **Linux/macOS**: Run `./start-augmentcode-free.sh`
 4. Use the GUI interface as described above
