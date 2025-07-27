@@ -7,8 +7,8 @@ AugmentCode无限免费续杯方案；新账号可获得600次免费的Claude So
 
 AugmentCode unlimited free refill plan; new accounts can get 600 free Claude Sonnet 4 calls
 
-# 使用工具后隔了半小时或者几个小时后封号，这种情况一般与网络环境也有关，与本工具无关，因为本项目原理无非是伪装成新用户无限合法使用
-If the account is blocked half an hour or several hours after using the tool, this situation is generally related to the network environment and has nothing to do with this tool, because the principle of this project is nothing more than pretending to be a new user and using it legally indefinitely.
+## 使用工具后隔了半小时或者几个小时后封号，这种情况一般与网络环境也有关，与本工具无关，因为本项目原理无非是伪装成新用户无限合法使用
+## If the account is blocked half an hour or several hours after using the tool, this situation is generally related to the network environment and has nothing to do with this tool, because the principle of this project is nothing more than pretending to be a new user and using it legally indefinitely.
 
 
 
@@ -28,6 +28,9 @@ If the account is blocked half an hour or several hours after using the tool, th
 - 修正了Cursor在macOS上的路径配置问题
 - 统一了所有IDE在macOS上的标准应用数据存储路径
 - 确保清理工具能够正确定位Cursor数据文件
+- Fixed the path configuration issue of Cursor on macOS
+- Unified the standard application data storage path for all IDEs on macOS
+- Ensured that the cleanup tool can correctly locate the Cursor data file
 
 **📢 重要更新**：
 - 目前最新逆向思路已经小范围测试成功；未来可能在合适时机发布；但是该逆向方式已经严重侵害了官方的正常运行权益，需要慎重考虑
