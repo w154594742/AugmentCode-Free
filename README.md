@@ -23,6 +23,75 @@ AugmentCode unlimited free refill plan; new accounts can get 600 free Claude Son
 [![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)](https://github.com/BasicProtein/AugmentCode-Free)
 
 
+#### 2025年7月31日更新：
+- 目前比较稳定的计划是切换社区计划或者是通过Google的GCP或者Github Actions间接无限使用新账号
+- 参考YouTube视频[Google Cloud Platform](https://youtu.be/P2ADJdk5mYo?si=2NgH6qIHP7BBEUUf)
+
+
+**切换社区计划：**
+- 首先在干净的环境下注册一个全新的账号，可能部分用户注册的时候会遇到问题，这时候建议使用指纹浏览器，然后开启全局模式的VPN工具，或者开启TUN模式
+- 注册完账户选择计划，切换为社区计划，如下图
+![IMG_2761](https://github.com/user-attachments/assets/86ef0037-aa9d-48c3-8c40-3001e965de85)
+- 切换完成之后，执行一次清理工具，然后登录账号即可使用，次数用完之后再循环按照步骤执行一般更换账号
+
+**Google Cloud Platform&Github Actions**
+- 这种方式本质上是借用第三方平台提供的虚拟机以达成伪装成新用户的方式
+- 每次更换账号只要重置虚拟设备即可
+- 参考YouTube视频[Google Cloud Platform](https://youtu.be/P2ADJdk5mYo?si=2NgH6qIHP7BBEUUf)
+
+
+**常见问题与解决方案：**
+ * 问题： "Your account example@example.com has been suspended. To continue, purchase a subscription."
+   * 解决方案： 在您的 VPN 客户端上启用全局模式。
+ * 问题： "Due to increased demand, we're limiting signups in certain regions to maintain performance for existing customers."
+   * 解决方案： 使用防关联浏览器（也称指纹浏览器）或其他类型的隐身浏览器，并测试您的 IP 地址。
+ * 问题： A "No Auth..." error message pops up in the VS Code IDE after logging in via a web browser.
+   * 解决方案： 使用防关联浏览器或其他隐身浏览器。
+   * 额外提示： 在接收验证码之前，您可以将 VPN 工具设置为规则模式。注册和登录过程也可以使用两个不同的 IP 地址。
+ * 问题： "Change your subscription. Switch plans or contact sales about Enterprise options."
+   * 解决方案： 清理您的浏览器环境（例如，缓存、Cookie 和本地存储）。
+  
+
+**推荐的防关联浏览器：**
+ * RoxyBrowser: https://roxybrowser.com
+ * AdsPower: https://www.adspower.net/
+
+
+#### Updated on July 31, 2025:
+ * Currently, the more stable plans are to switch to the Community Plan or to indirectly use new accounts indefinitely through Google's GCP or GitHub Actions.
+ * Refer to this YouTube video: [Google Cloud Platform](https://youtu.be/P2ADJdk5mYo?si=2NgH6qIHP7BBEUUf)
+
+
+**Switching to the Community Plan:**
+ * First, register a new account in a clean environment. Some users may encounter issues during registration. In this case, it is recommended to use an anti-detect browser and enable a global mode VPN or TUN mode.
+ * After registering the account, select a plan and switch to the Community Plan, as shown in the image below.
+ * After switching, run a cleaning tool, then log in to the account to use it. After the usage is exhausted, repeat the steps to change the account.
+
+
+**Google Cloud Platform & GitHub Actions**
+ * This method essentially uses virtual machines provided by third-party platforms to masquerade as a new user.
+ * Each time you change your account, you only need to reset the virtual device.
+ * Refer to this YouTube video: [Google Cloud Platform](https://youtu.be/P2ADJdk5mYo?si=2NgH6qIHP7BBEUUf)
+
+**Common Issues and Solutions:**
+ * Issue: "Your account example@example.com has been suspended. To continue, purchase a subscription."
+   * Solution: Enable global mode on your VPN client.
+ * Issue: "Due to increased demand, we're limiting signups in certain regions to maintain performance for existing customers."
+   * Solution: Use an anti-detect browser (also known as a fingerprint browser) or another type of stealth browser, and test your IP address.
+ * Issue: A "No Auth..." error message pops up in the VS Code IDE after logging in via a web browser.
+   * Solution: Use an anti-detect browser or another stealth browser.
+   * Additional Tip: Before receiving the verification code, you can set your VPN tool to rule-based mode. It's also possible to use two different IP addresses for the registration and login processes.
+ * Issue: "Change your subscription. Switch plans or contact sales about Enterprise options."
+   * Solution: Clear your Browse environment (e.g., cache, cookies, and local storage).
+  
+
+
+**Recommended Anti-Detect Browsers:**
+ * RoxyBrowser: https://roxybrowser.com
+ * AdsPower: https://www.adspower.net/
+
+
+
 #### 2025年7月27日更新 (v1.0.6)：
 
 **🔧 macOS路径修正**：
