@@ -30,7 +30,7 @@ AugmentCode unlimited free refill plan; new accounts can get 600 free Claude Son
 - 当所有IDE均换过一轮账号时，重置一下vm实例，重复循环上述操作
 
 
-#### August 1, 2025 Update:
+#### Updated on August 1, 2025:
  - The community plan is no longer valid.
  - Please use the GCP method in conjunction with multiple IDEs (Windsurf, Cursor, VSCode, Kiro, Void, IDEA, and Android Studio). Install the Augment plugin on each IDE. Use multiple accounts for free trials; each account offers 125 free requests. With 7 IDEs, this gives you a total of 7 * 125 = 875 free requests.
  - Once you've cycled through all the accounts on every IDE, simply reset the virtual machine (VM) instance and repeat the process.
