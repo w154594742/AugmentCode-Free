@@ -23,6 +23,20 @@ AugmentCode unlimited free refill plan; new accounts can get 600 free Claude Son
 [![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)](https://github.com/BasicProtein/AugmentCode-Free)
 
 
+
+#### 2025年8月1日更新：
+- 目前社区计划已经失效
+- 请使用GCP方式，配合多IDE使用（Windsurf、Cursor、VSCode、Kiro、Void、IDEA、Android Studio分别安装Augment插件，然后多账号免费试用，一个账号125次免费请求，7个IDE就是7*125=875次免费请求）
+- 当所有IDE均换过一轮账号时，重置一下vm实例，重复循环上述操作
+
+
+#### August 1, 2025 Update:
+ - The community plan is no longer valid.
+ - Please use the GCP method in conjunction with multiple IDEs (Windsurf, Cursor, VSCode, Kiro, Void, IDEA, and Android Studio). Install the Augment plugin on each IDE. Use multiple accounts for free trials; each account offers 125 free requests. With 7 IDEs, this gives you a total of 7 * 125 = 875 free requests.
+ - Once you've cycled through all the accounts on every IDE, simply reset the virtual machine (VM) instance and repeat the process.
+
+
+
 #### 2025年7月31日更新：
 - 目前比较稳定的计划是切换社区计划或者是通过Google的GCP或者Github Actions间接无限使用新账号
 - 参考YouTube视频[Google Cloud Platform](https://youtu.be/P2ADJdk5mYo?si=2NgH6qIHP7BBEUUf)
