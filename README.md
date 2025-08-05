@@ -4,12 +4,7 @@
 https://t.me/+rL2-my2wYy5hODA1
 ![0d0f761c0d09056358a24766f806802](https://github.com/user-attachments/assets/64c8cb5d-7989-4c8e-808b-0b72b6cc9cc8)
 
-AugmentCode无限免费续杯方案；新账号可获得600次免费的Claude Sonnet 4调用
 
-AugmentCode unlimited free refill plan; new accounts can get 600 free Claude Sonnet 4 calls
-
-## 使用工具后隔了半小时或者几个小时后封号，这种情况一般与网络环境也有关，与本工具无关，因为本项目原理无非是伪装成新用户无限合法使用
-## If the account is blocked half an hour or several hours after using the tool, this situation is generally related to the network environment and has nothing to do with this tool, because the principle of this project is nothing more than pretending to be a new user and using it legally indefinitely.
 
 
 
@@ -22,7 +17,28 @@ AugmentCode unlimited free refill plan; new accounts can get 600 free Claude Son
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)](https://github.com/BasicProtein/AugmentCode-Free)
 
+#### 2025年8月5日更新：
 
+- 分享一个Augment魔改去风控版本，只要注册直接登录即可过风控直接使用，已经稳定二天半，具体核心原理就是去掉登录之后的上报接口。
+- [Augment-521.vsix.zip](https://sharewh.chaoxing.com/share/download/83b70fb33c370dee593e52475d10e8e6)
+- 作者@待我绝境涅槃
+
+#### Updated on August 5, 2025:
+
+- I'd like to share a modified version of Augment that removes risk control. You can use it directly by simply registering and logging in, passing risk control. It has been stable for two and a half days. The core principle is to remove the reporting interface after login.
+- [Augment-521.vsix.zip](https://sharewh.chaoxing.com/share/download/83b70fb33c370dee593e52475d10e8e6)
+- Author@待我绝境涅槃
+
+
+
+
+---
+AugmentCode无限免费续杯方案；新账号可获得600次免费的Claude Sonnet 4调用
+
+AugmentCode unlimited free refill plan; new accounts can get 600 free Claude Sonnet 4 calls
+
+## 使用工具后隔了半小时或者几个小时后封号，这种情况一般与网络环境也有关，与本工具无关，因为本项目原理无非是伪装成新用户无限合法使用
+## If the account is blocked half an hour or several hours after using the tool, this situation is generally related to the network environment and has nothing to do with this tool, because the principle of this project is nothing more than pretending to be a new user and using it legally indefinitely.
 
 #### 2025年8月1日更新：
 - 目前社区计划已经失效
