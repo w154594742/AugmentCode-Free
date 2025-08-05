@@ -22,12 +22,14 @@ https://t.me/+rL2-my2wYy5hODA1
 - 分享一个Augment魔改去风控版本，只要注册直接登录即可过风控直接使用，已经稳定二天半，具体核心原理就是去掉登录之后的上报接口。
 - [Augment-521.vsix.zip](https://sharewh.chaoxing.com/share/download/83b70fb33c370dee593e52475d10e8e6)
 - 作者@待我绝境涅槃
+- [详细的使用方法](https://github.com/agassiz/vscode-augment/blob/main/README.md)
 
 #### Updated on August 5, 2025:
 
 - I'd like to share a modified version of Augment that removes risk control. You can use it directly by simply registering and logging in, passing risk control. It has been stable for two and a half days. The core principle is to remove the reporting interface after login.
 - [Augment-521.vsix.zip](https://sharewh.chaoxing.com/share/download/83b70fb33c370dee593e52475d10e8e6)
 - Author@待我绝境涅槃
+-  [Detailed usage instructions](https://github.com/agassiz/vscode-augment/blob/main/README.md)
 
 
 
