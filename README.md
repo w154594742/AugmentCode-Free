@@ -1,4 +1,5 @@
-# AugmentCode-Free v1.0.6
+# AugmentCode-Free (Click the star，continuously updating and maintaining)
+**点个星标，持续更新维护中……**
 # Telegram Communication Group
 
 https://t.me/+rL2-my2wYy5hODA1
