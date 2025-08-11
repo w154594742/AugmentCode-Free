@@ -31,7 +31,7 @@ https://t.me/+rL2-my2wYy5hODA1
 - [Augment-521.vsix.zip](https://sharewh.chaoxing.com/share/download/83b70fb33c370dee593e52475d10e8e6)
 - Author@待我绝境涅槃
 -  [Detailed usage instructions](https://github.com/agassiz/vscode-augment/blob/main/README.md)
--  [Installation Instructions (English version)](https://github.com/BasicProtein/AugmentCode-Free/blob/master/Installation-Method-EN)
+-  [Installation Instructions (English version)](https://github.com/BasicProtein/AugmentCode-Free/blob/master/Installation-Method-EN.md)
 
 
 
