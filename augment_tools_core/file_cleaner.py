@@ -44,14 +44,16 @@ class FileCleaner:
         }
         
         # 清理globalStorage
+        global_storage_path = None
         if "state_db" in paths:
             global_storage_path = paths["state_db"].parent
             results["globalStorage"] = self._clean_global_storage(global_storage_path, force_mode)
-        
+
         # 清理workspaceStorage
-        workspace_storage_path = global_storage_path.parent / "workspaceStorage"
-        if workspace_storage_path.exists():
-            results["workspaceStorage"] = self._clean_workspace_storage(workspace_storage_path, force_mode)
+        if global_storage_path:
+            workspace_storage_path = global_storage_path.parent / "workspaceStorage"
+            if workspace_storage_path.exists():
+                results["workspaceStorage"] = self._clean_workspace_storage(workspace_storage_path, force_mode)
         
         return results
     
