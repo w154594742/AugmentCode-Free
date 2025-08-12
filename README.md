@@ -18,6 +18,32 @@ https://t.me/+rL2-my2wYy5hODA1
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)](https://github.com/BasicProtein/AugmentCode-Free)
 
+#### 2025年8月12日更新 (v2.0.0)：
+
+**🚀 重大功能升级 - 增强清理引擎**：
+- **强力进程管理**：智能检测和终止IDE进程，支持多种终止策略和重试机制
+- **高级文件清理**：物理文件删除功能，支持强制删除被锁定的文件
+- **多种清理模式**：
+  - `database_only`: 仅清理数据库内容，保留文件结构
+  - `file_only`: 仅删除物理文件，不修改数据库内容
+  - `hybrid`: 推荐模式，先清理数据库内容，再删除相关文件
+  - `aggressive`: 激进模式，强制终止进程并删除所有相关文件
+- **增强CLI命令**：新增 `clean-enhanced`, `check-processes`, `kill-processes`, `file-cleanup` 命令
+- **自动备份**：清理前自动创建数据库备份，确保数据安全
+- **详细统计**：显示删除的具体条目数、文件数和进程数
+- **完全向后兼容**：现有GUI界面保持不变，后端功能大幅增强
+
+#### Updated on August 12, 2025 (v2.0.0):
+
+**🔧 Major Feature Upgrade - Enhanced Cleanup Engine**：
+- **Powerful Process Management**: Intelligent IDE process detection and termination with multiple strategies
+- **Advanced File Cleanup**: Physical file deletion with force delete for locked files
+- **Multiple Cleanup Modes**: database_only, file_only, hybrid, and aggressive modes
+- **Enhanced CLI Commands**: New commands for comprehensive cleanup operations
+- **Automatic Backup**: Auto-backup database before cleanup for data safety
+- **Detailed Statistics**: Shows exact counts of deleted entries, files, and processes
+- **Full Backward Compatibility**: Existing GUI unchanged, backend significantly enhanced
+
 #### 2025年8月5日更新：
 
 - 分享一个Augment魔改去风控版本，只要注册直接登录即可过风控直接使用，已经稳定二天半，具体核心原理就是去掉登录之后的上报接口。
@@ -125,30 +151,6 @@ AugmentCode unlimited free refill plan; new accounts can get 600 free Claude Son
  * AdsPower: https://www.adspower.net/
 
 
-
-#### 2025年8月12日更新 (v2.0.0)：
-
-**🚀 重大功能升级 - 增强清理引擎**：
-- **强力进程管理**：智能检测和终止IDE进程，支持多种终止策略和重试机制
-- **高级文件清理**：物理文件删除功能，支持强制删除被锁定的文件
-- **多种清理模式**：
-  - `database_only`: 仅清理数据库内容，保留文件结构
-  - `file_only`: 仅删除物理文件，不修改数据库内容
-  - `hybrid`: 推荐模式，先清理数据库内容，再删除相关文件
-  - `aggressive`: 激进模式，强制终止进程并删除所有相关文件
-- **增强CLI命令**：新增 `clean-enhanced`, `check-processes`, `kill-processes`, `file-cleanup` 命令
-- **自动备份**：清理前自动创建数据库备份，确保数据安全
-- **详细统计**：显示删除的具体条目数、文件数和进程数
-- **完全向后兼容**：现有GUI界面保持不变，后端功能大幅增强
-
-**🔧 Major Feature Upgrade - Enhanced Cleanup Engine**：
-- **Powerful Process Management**: Intelligent IDE process detection and termination with multiple strategies
-- **Advanced File Cleanup**: Physical file deletion with force delete for locked files
-- **Multiple Cleanup Modes**: database_only, file_only, hybrid, and aggressive modes
-- **Enhanced CLI Commands**: New commands for comprehensive cleanup operations
-- **Automatic Backup**: Auto-backup database before cleanup for data safety
-- **Detailed Statistics**: Shows exact counts of deleted entries, files, and processes
-- **Full Backward Compatibility**: Existing GUI unchanged, backend significantly enhanced
 
 #### 2025年7月27日更新 (v1.0.6)：
 
