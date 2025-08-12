@@ -514,3 +514,26 @@ def get_ide_process_names(ide_type: IDEType) -> list[str]:
         ]
     }
     return process_names.get(ide_type, [])
+
+
+# --- Patch Related Functions ---
+def get_ide_extension_name(ide_type: IDEType) -> str:
+    """Get the extension name pattern for the specified IDE"""
+    extension_names = {
+        IDEType.VSCODE: "augment.vscode-augment",
+        IDEType.CURSOR: "augment.cursor-augment",
+        IDEType.WINDSURF: "augment.windsurf-augment",
+        IDEType.JETBRAINS: "augment.jetbrains-augment"
+    }
+    return extension_names.get(ide_type, "augment")
+
+
+def get_patch_target_description(ide_type: IDEType) -> str:
+    """Get description of what will be patched for the IDE"""
+    descriptions = {
+        IDEType.VSCODE: "VS Code AugmentCode 扩展文件",
+        IDEType.CURSOR: "Cursor AugmentCode 扩展文件",
+        IDEType.WINDSURF: "Windsurf AugmentCode 扩展文件",
+        IDEType.JETBRAINS: "JetBrains AugmentCode 插件文件"
+    }
+    return descriptions.get(ide_type, f"{ide_type.value} 扩展文件")

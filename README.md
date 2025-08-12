@@ -44,6 +44,20 @@ https://t.me/+rL2-my2wYy5hODA1
 - **Detailed Statistics**: Shows exact counts of deleted entries, files, and processes
 - **Full Backward Compatibility**: Existing GUI unchanged, backend significantly enhanced
 
+**🎨 界面优化与多语言完善**：
+- **完美多语言支持**：所有界面元素支持中英文实时切换，包括按钮、标签、下拉框选项
+- **布局优化**：窗口宽度增加至680px，按钮宽度全面提升，确保英文文本完整显示
+- **补丁功能集成**：新增代码补丁应用、恢复、扫描功能，支持多种补丁模式（随机假数据、完全阻止、空数据、隐身模式、调试模式）
+- **界面细节优化**：清空日志按钮定位优化，垂直高度增加，解决显示截断问题
+- **用户体验提升**：移除多余emoji，界面更简洁专业，所有按钮和文本在中英文模式下都能完美显示
+
+**🎨 Interface Optimization & Multilingual Enhancement**：
+- **Perfect Multilingual Support**: All interface elements support real-time Chinese-English switching, including buttons, labels, and dropdown options
+- **Layout Optimization**: Window width increased to 680px, button widths comprehensively enhanced to ensure complete English text display
+- **Patch Function Integration**: Added code patch application, restoration, and scanning features with multiple patch modes (random fake data, complete block, empty data, stealth mode, debug mode)
+- **Interface Detail Optimization**: Clear log button positioning optimized, vertical height increased, resolving display truncation issues
+- **User Experience Enhancement**: Removed redundant emojis for a cleaner, more professional interface; all buttons and text display perfectly in both Chinese and English modes
+
 #### 2025年8月5日更新：
 
 - 分享一个Augment魔改去风控版本，只要注册直接登录即可过风控直接使用，已经稳定二天半，具体核心原理就是去掉登录之后的上报接口。

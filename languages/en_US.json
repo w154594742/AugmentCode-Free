@@ -5,13 +5,26 @@
     "version": "v2.0.0 - Enhanced Cleanup Engine",
     "select_ide": "Select IDE:",
     "language": "Language:",
-    "about": "About"
+    "about": "About",
+    "patch_mode": "Patch Mode:",
+    "code_patch": "Code Patch",
+    "operation_log": "Operation Log:"
+  },
+  "patch_modes": {
+    "random": "Random Fake Data",
+    "block": "Complete Block",
+    "empty": "Empty Data",
+    "stealth": "Stealth Mode",
+    "debug": "Debug Mode"
   },
   "buttons": {
     "run_all": "Modify All Configurations",
     "close_ide": "Close Selected IDE",
-    "clean_db": "Clean IDE Database", 
+    "clean_db": "Clean IDE Database",
     "modify_ids": "Modify Telemetry IDs",
+    "apply_patch": "Apply Patch",
+    "restore_files": "Restore Files",
+    "scan_status": "Scan Status",
     "clear_log": "Clear Log",
     "ok": "OK",
     "cancel": "Cancel",
@@ -45,7 +58,7 @@
   "status": {
     "success": "✅ Operation Completed",
     "error": "❌ Operation Failed",
-    "warning": "⚠️ Warning", 
+    "warning": "⚠️ Warning",
     "processing": "ℹ️ Processing...",
     "ready": "Ready",
     "running": "Running modification...",
@@ -53,7 +66,8 @@
     "cleaning_db": "Cleaning database...",
     "modifying_ids": "Modifying telemetry IDs...",
     "completed": "✅ All tools execution completed",
-    "failed": "❌ Tools execution failed"
+    "failed": "❌ Tools execution failed",
+    "not_scanned": "Status: Not Scanned"
   },
   "copyright": {
     "notice": "© 2025 BasicProtein. All rights reserved.",

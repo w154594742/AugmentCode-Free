@@ -31,6 +31,8 @@ class ModernButton(QPushButton):
             self.setProperty("class", "secondary")
         elif self.button_type == "warning":
             self.setProperty("class", "warning")
+        elif self.button_type == "success":
+            self.setProperty("class", "success")
         
         # 设置最小尺寸
         self.setMinimumHeight(45)
@@ -121,7 +123,7 @@ class SectionFrame(QFrame):
                 background-color: #ffffff;
                 border: 1px solid #e5e7eb;
                 border-radius: 8px;
-                padding: 8px;
+                padding: 6px;
             }}
         """)
 

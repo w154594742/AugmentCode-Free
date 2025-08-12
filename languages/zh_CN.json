@@ -5,13 +5,26 @@
     "version": "v2.0.0 - 增强清理引擎版本",
     "select_ide": "选择 IDE:",
     "language": "语言:",
-    "about": "关于"
+    "about": "关于",
+    "patch_mode": "补丁模式:",
+    "code_patch": "代码补丁",
+    "operation_log": "操作日志:"
+  },
+  "patch_modes": {
+    "random": "随机假数据",
+    "block": "完全阻止",
+    "empty": "空数据",
+    "stealth": "隐身模式",
+    "debug": "调试模式"
   },
   "buttons": {
     "run_all": "一键修改所有配置",
-    "close_ide": "关闭选中的IDE", 
+    "close_ide": "关闭选中的IDE",
     "clean_db": "清理IDE数据库",
     "modify_ids": "修改IDE遥测ID",
+    "apply_patch": "应用补丁",
+    "restore_files": "恢复文件",
+    "scan_status": "扫描状态",
     "clear_log": "清空日志",
     "ok": "确定",
     "cancel": "取消",
@@ -44,7 +57,7 @@
   },
   "status": {
     "success": "✅ 操作完成",
-    "error": "❌ 操作失败", 
+    "error": "❌ 操作失败",
     "warning": "⚠️ 注意",
     "processing": "ℹ️ 处理中...",
     "ready": "就绪",
@@ -53,7 +66,8 @@
     "cleaning_db": "正在清理数据库...",
     "modifying_ids": "正在修改遥测ID...",
     "completed": "✅ 所有工具执行已完成",
-    "failed": "❌ 工具执行失败"
+    "failed": "❌ 工具执行失败",
+    "not_scanned": "状态: 未扫描"
   },
   "copyright": {
     "notice": "© 2025 BasicProtein. All rights reserved.",
