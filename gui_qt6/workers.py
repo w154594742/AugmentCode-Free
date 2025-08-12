@@ -9,7 +9,7 @@ from PyQt6.QtCore import QThread, pyqtSignal
 from augment_tools_core.common_utils import (
     IDEType, get_ide_display_name, get_ide_process_names
 )
-from augment_tools_core.database_manager import clean_ide_database
+from augment_tools_core.database_manager import clean_ide_database, clean_ide_database_enhanced
 from augment_tools_core.telemetry_manager import modify_ide_telemetry_ids
 
 
@@ -97,26 +97,36 @@ class CleanDatabaseWorker(BaseWorker):
         self.ide_name = get_ide_display_name(ide_type)
     
     def run(self):
-        """执行清理数据库任务"""
+        """执行清理数据库任务（增强版）"""
         try:
             self.emit_progress(f"开始清理 {self.ide_name} 数据库 (关键字: '{self.keyword}')")
             self.emit_status(f"正在清理 {self.ide_name} 数据库...", "info")
-            
-            # 执行数据库清理
-            success = clean_ide_database(self.ide_type, self.keyword)
-            
+
+            # 使用增强版数据库清理，获取详细结果
+            result = clean_ide_database_enhanced(self.ide_type, self.keyword)
+
             if self.is_cancelled:
                 return
-            
-            if success:
+
+            if result["success"]:
+                # 显示详细的清理结果
+                if result["entries_removed"] > 0:
+                    self.emit_progress(f"成功删除 {result['entries_removed']} 个包含关键字的条目")
+                else:
+                    self.emit_progress("未找到需要清理的条目")
+
+                if result["backup_created"]:
+                    self.emit_progress("已自动创建数据库备份")
+
                 self.emit_progress("数据库清理过程完成。")
                 self.emit_status("数据库清理完成", "success")
                 self.task_completed.emit(True)
             else:
-                self.emit_progress("数据库清理过程报告错误。请检查之前的消息。")
+                error_msg = result.get("error_message", "未知错误")
+                self.emit_progress(f"数据库清理失败: {error_msg}")
                 self.emit_status("数据库清理失败", "error")
                 self.task_completed.emit(False)
-                
+
         except Exception as e:
             self.emit_progress(f"清理数据库时发生错误: {str(e)}")
             self.emit_status(f"清理失败: {str(e)}", "error")
@@ -235,6 +245,144 @@ class RunAllWorker(BaseWorker):
                         self.emit_progress(f"关闭进程失败: {e}")
         except Exception as e:
             self.emit_progress(f"关闭IDE时发生错误: {e}")
+
+
+# === 新增工作线程：增强清理功能 ===
+
+class EnhancedCleanupWorker(BaseWorker):
+    """增强清理工作线程（支持多种清理模式）"""
+
+    def __init__(self, ide_type: IDEType, mode: str = "hybrid",
+                 keyword: str = "augment", force_delete: bool = False,
+                 kill_processes: bool = False, parent=None):
+        super().__init__(parent)
+        self.ide_type = ide_type
+        self.mode = mode
+        self.keyword = keyword
+        self.force_delete = force_delete
+        self.kill_processes = kill_processes
+        self.ide_name = get_ide_display_name(ide_type)
+
+    def run(self):
+        """执行增强清理任务"""
+        import asyncio
+        try:
+            self.emit_progress(f"开始增强清理 {self.ide_name} (模式: {self.mode})")
+            self.emit_status(f"正在执行增强清理...", "info")
+
+            # 导入清理功能
+            from augment_tools_core.database_manager import clean_ide_comprehensive
+
+            # 执行异步清理
+            async def run_cleanup():
+                return await clean_ide_comprehensive(
+                    ide_type=self.ide_type,
+                    mode=self.mode,
+                    keyword=self.keyword,
+                    force_delete=self.force_delete,
+                    kill_processes=self.kill_processes
+                )
+
+            # 在新的事件循环中运行
+            try:
+                loop = asyncio.get_event_loop()
+            except RuntimeError:
+                loop = asyncio.new_event_loop()
+                asyncio.set_event_loop(loop)
+
+            result = loop.run_until_complete(run_cleanup())
+
+            if self.is_cancelled:
+                return
+
+            if result["success"]:
+                # 显示详细结果
+                self.emit_progress("清理结果:")
+                if result.get("database_cleaned"):
+                    self.emit_progress(f"  数据库清理: 删除 {result.get('database_entries_removed', 0)} 个条目")
+                if result.get("files_deleted", 0) > 0:
+                    self.emit_progress(f"  文件删除: {result['files_deleted']} 个文件")
+                    self.emit_progress(f"    - globalStorage: {result.get('global_storage_files', 0)} 个")
+                    self.emit_progress(f"    - workspaceStorage: {result.get('workspace_storage_files', 0)} 个")
+                if result.get("processes_killed", 0) > 0:
+                    self.emit_progress(f"  进程终止: {result['processes_killed']} 个进程")
+
+                self.emit_progress("增强清理完成。")
+                self.emit_status("增强清理完成", "success")
+                self.task_completed.emit(True)
+            else:
+                error_messages = result.get("errors", ["未知错误"])
+                for error in error_messages:
+                    self.emit_progress(f"错误: {error}")
+                self.emit_status("增强清理失败", "error")
+                self.task_completed.emit(False)
+
+        except Exception as e:
+            self.emit_progress(f"增强清理时发生错误: {str(e)}")
+            self.emit_status(f"清理失败: {str(e)}", "error")
+            self.task_completed.emit(False)
+
+class ProcessManagerWorker(BaseWorker):
+    """进程管理工作线程"""
+
+    def __init__(self, ide_type: IDEType, action: str = "check", parent=None):
+        super().__init__(parent)
+        self.ide_type = ide_type
+        self.action = action  # "check" 或 "kill"
+        self.ide_name = get_ide_display_name(ide_type)
+
+    def run(self):
+        """执行进程管理任务"""
+        try:
+            from augment_tools_core.process_manager import ProcessManager
+
+            pm = ProcessManager()
+
+            if self.action == "check":
+                self.emit_progress(f"检查 {self.ide_name} 进程...")
+                processes = pm.get_ide_processes(self.ide_type)
+
+                if processes:
+                    self.emit_progress(f"找到 {len(processes)} 个 {self.ide_name} 进程:")
+                    for proc in processes:
+                        self.emit_progress(f"  {proc}")
+                    self.emit_status(f"找到 {len(processes)} 个进程", "info")
+                else:
+                    self.emit_progress(f"未找到 {self.ide_name} 进程")
+                    self.emit_status("未找到进程", "info")
+
+                self.task_completed.emit(True)
+
+            elif self.action == "kill":
+                self.emit_progress(f"终止 {self.ide_name} 进程...")
+
+                import asyncio
+
+                async def kill_processes():
+                    return await pm.kill_ide_processes(self.ide_type, force=True)
+
+                # 在新的事件循环中运行
+                try:
+                    loop = asyncio.get_event_loop()
+                except RuntimeError:
+                    loop = asyncio.new_event_loop()
+                    asyncio.set_event_loop(loop)
+
+                success = loop.run_until_complete(kill_processes())
+
+                if success:
+                    self.emit_progress("所有进程已成功终止")
+                    self.emit_status("进程终止完成", "success")
+                    self.task_completed.emit(True)
+                else:
+                    self.emit_progress("部分进程可能无法终止")
+                    self.emit_status("进程终止部分失败", "warning")
+                    self.task_completed.emit(False)
+
+        except Exception as e:
+            self.emit_progress(f"进程管理时发生错误: {str(e)}")
+            self.emit_status(f"操作失败: {str(e)}", "error")
+            self.task_completed.emit(False)
 
 
 # 导出所有工作线程

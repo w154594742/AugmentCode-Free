@@ -1,4 +1,4 @@
-# AugmentCode-Free (Click the star，continuously updating and maintaining)
+# AugmentCode-Free v2.0.0 (Click the star，continuously updating and maintaining)
 **点个星标，持续更新维护中……**
 # Telegram Communication Group
 
@@ -125,6 +125,30 @@ AugmentCode unlimited free refill plan; new accounts can get 600 free Claude Son
  * AdsPower: https://www.adspower.net/
 
 
+
+#### 2025年8月12日更新 (v2.0.0)：
+
+**🚀 重大功能升级 - 增强清理引擎**：
+- **强力进程管理**：智能检测和终止IDE进程，支持多种终止策略和重试机制
+- **高级文件清理**：物理文件删除功能，支持强制删除被锁定的文件
+- **多种清理模式**：
+  - `database_only`: 仅清理数据库内容，保留文件结构
+  - `file_only`: 仅删除物理文件，不修改数据库内容
+  - `hybrid`: 推荐模式，先清理数据库内容，再删除相关文件
+  - `aggressive`: 激进模式，强制终止进程并删除所有相关文件
+- **增强CLI命令**：新增 `clean-enhanced`, `check-processes`, `kill-processes`, `file-cleanup` 命令
+- **自动备份**：清理前自动创建数据库备份，确保数据安全
+- **详细统计**：显示删除的具体条目数、文件数和进程数
+- **完全向后兼容**：现有GUI界面保持不变，后端功能大幅增强
+
+**🔧 Major Feature Upgrade - Enhanced Cleanup Engine**：
+- **Powerful Process Management**: Intelligent IDE process detection and termination with multiple strategies
+- **Advanced File Cleanup**: Physical file deletion with force delete for locked files
+- **Multiple Cleanup Modes**: database_only, file_only, hybrid, and aggressive modes
+- **Enhanced CLI Commands**: New commands for comprehensive cleanup operations
+- **Automatic Backup**: Auto-backup database before cleanup for data safety
+- **Detailed Statistics**: Shows exact counts of deleted entries, files, and processes
+- **Full Backward Compatibility**: Existing GUI unchanged, backend significantly enhanced
 
 #### 2025年7月27日更新 (v1.0.6)：
 
@@ -322,7 +346,14 @@ Summary: The primary account can be any account, even if it is blocked. The prim
 ## Features
 
 ### Core Functionality (Available in CLI & GUI)
--   **Multi-IDE Database Cleaning**: Cleans specific entries from VS Code, Cursor, and Windsurf local databases.
+-   **Enhanced Database Cleaning**: Cleans specific entries from VS Code, Cursor, and Windsurf local databases with automatic backup and detailed statistics.
+-   **Powerful Process Management**: Intelligent IDE process detection and termination with multiple strategies and retry mechanisms.
+-   **Advanced File Cleanup**: Physical file deletion with force delete for locked files and recursive workspace storage cleanup.
+-   **Multiple Cleanup Modes**:
+    - `database_only`: Clean database content only, preserve file structure
+    - `file_only`: Delete physical files only, no database modification
+    - `hybrid`: Recommended mode, clean database first then delete related files
+    - `aggressive`: Force mode, terminate processes and delete all related files
 -   **Multi-IDE Telemetry ID Modification**: Helps in resetting or changing telemetry identifiers stored by supported IDEs.
 -   **JetBrains SessionID Management**: Automatically modifies SessionID for JetBrains products (PyCharm, IntelliJ IDEA, WebStorm, etc.).
 -   **Smart Process Detection**: Automatically detects and manages running IDE processes.
@@ -439,6 +470,23 @@ augment-tools run-all --ide vscode
 augment-tools run-all --ide cursor
 augment-tools run-all --ide windsurf
 augment-tools run-all --ide jetbrains
+
+# === v2.0.0 New Enhanced Commands ===
+
+# Enhanced cleanup (recommended hybrid mode)
+augment-tools clean-enhanced --ide vscode --mode hybrid
+
+# Aggressive cleanup (force kill processes + delete files)
+augment-tools clean-enhanced --ide vscode --mode aggressive --force --kill-processes
+
+# File cleanup only
+augment-tools file-cleanup --ide vscode --force
+
+# Check IDE processes
+augment-tools check-processes --ide vscode
+
+# Kill IDE processes
+augment-tools kill-processes --ide vscode --force
 ```
 
 -   **Directly (for development/advanced use, from project root):**
@@ -458,7 +506,14 @@ Use these tools at your own risk. Always back up important data before running m
 ## 功能特性
 
 ### 核心功能 (命令行及GUI均可用)
--   **多IDE数据库清理**: 清理 VS Code、Cursor、Windsurf 本地数据库中的特定条目。
+-   **增强数据库清理**: 清理 VS Code、Cursor、Windsurf 本地数据库中的特定条目，支持自动备份和详细统计。
+-   **强力进程管理**: 智能检测和终止IDE进程，支持多种终止策略和重试机制。
+-   **高级文件清理**: 物理文件删除功能，支持强制删除被锁定的文件和递归清理工作区存储。
+-   **多种清理模式**:
+    - `database_only`: 仅清理数据库内容，保留文件结构
+    - `file_only`: 仅删除物理文件，不修改数据库内容
+    - `hybrid`: 推荐模式，先清理数据库内容，再删除相关文件
+    - `aggressive`: 激进模式，强制终止进程并删除所有相关文件
 -   **多IDE遥测ID修改**: 帮助重置或更改支持的IDE存储的遥测标识符。
 -   **JetBrains SessionID管理**: 自动修改 JetBrains 系列产品的 SessionID（PyCharm、IntelliJ IDEA、WebStorm等）。
 -   **智能进程检测**: 自动检测和管理正在运行的IDE进程。
@@ -541,6 +596,23 @@ GUI 为所有功能提供了简单易用的操作界面。
 
     # 为 VS Code 运行所有工具
     augment-tools run-all --ide vscode
+
+    # === v2.0.0 新增增强命令 ===
+
+    # 增强清理 (推荐混合模式)
+    augment-tools clean-enhanced --ide vscode --mode hybrid
+
+    # 激进清理 (强制终止进程+删除文件)
+    augment-tools clean-enhanced --ide vscode --mode aggressive --force --kill-processes
+
+    # 仅文件清理
+    augment-tools file-cleanup --ide vscode --force
+
+    # 检查IDE进程
+    augment-tools check-processes --ide vscode
+
+    # 终止IDE进程
+    augment-tools kill-processes --ide vscode --force
     ```
 
 -   **直接运行 (用于开发/高级用户, 从项目根目录):**
