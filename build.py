@@ -37,7 +37,7 @@ import concurrent.futures
 from contextlib import contextmanager
 
 # Build Configuration
-VERSION = "2.0.0"
+VERSION = "2.0.1"
 PROJECT_NAME = "AugmentCode-Free"
 AUTHOR = "BasicProtein"
 DESCRIPTION = "多IDE维护工具包 - 支持VS Code、Cursor、Windsurf、JetBrains"

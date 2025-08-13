@@ -2,7 +2,7 @@
   "app": {
     "title": "AugmentCode-Free",
     "welcome": "欢迎使用",
-    "version": "v2.0.0 - 增强清理引擎版本",
+    "version": "v2.0.1 - 补丁注入关键版本",
     "select_ide": "选择 IDE:",
     "language": "语言:",
     "about": "关于",
