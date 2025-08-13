@@ -8,7 +8,16 @@
     "about": "About",
     "patch_mode": "Patch Mode:",
     "code_patch": "Code Patch",
-    "operation_log": "Operation Log:"
+    "operation_log": "Operation Log:",
+    "description": "AugmentCode-Free is an open-source and free IDE maintenance tool.",
+    "supported_ides": "Supported IDEs:",
+    "ide_list": "• VS Code\n• Cursor\n• Windsurf",
+    "main_features": "Main Features:",
+    "feature_list": "• Clean IDE Database\n• Modify Telemetry IDs\n• One-click Modify All",
+    "opensource_notice": "This project is completely open source and free!",
+    "warning_notice": "⚠️ Important Notice:\nThis project is completely open source and free! If someone charges you, please contact the seller immediately for a refund and report the fraud.",
+    "project_address": "Project Address:",
+    "dont_show_again": "Don't show this dialog on startup"
   },
   "patch_modes": {
     "random": "Random Fake Data",

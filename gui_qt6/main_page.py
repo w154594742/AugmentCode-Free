@@ -674,7 +674,7 @@ class MainPage(QWidget):
 
         # 创建并启动补丁Worker
         self.current_worker = PatchWorker(ide_type, patch_mode)
-        self.current_worker.progress_updated.connect(self._append_log)
+        self.current_worker.progress_updated.connect(self._add_log)
         self.current_worker.patch_completed.connect(self._on_patch_completed)
         self.current_worker.file_found.connect(self._on_patch_file_found)
         self.current_worker.start()
@@ -709,7 +709,7 @@ class MainPage(QWidget):
 
         # 创建并启动恢复Worker
         self.current_worker = RestoreWorker(ide_type)
-        self.current_worker.progress_updated.connect(self._append_log)
+        self.current_worker.progress_updated.connect(self._add_log)
         self.current_worker.restore_completed.connect(self._on_restore_completed)
         self.current_worker.start()
 
@@ -729,7 +729,7 @@ class MainPage(QWidget):
 
         # 创建并启动扫描Worker
         self.current_worker = ScanWorker([ide_type])
-        self.current_worker.progress_updated.connect(self._append_log)
+        self.current_worker.progress_updated.connect(self._add_log)
         self.current_worker.scan_completed.connect(self._on_scan_completed)
         self.current_worker.file_found.connect(self._on_scan_file_found)
         self.current_worker.start()
@@ -781,8 +781,8 @@ class MainPage(QWidget):
 
     def _on_patch_file_found(self, file_path: str, status: str):
         """补丁文件发现回调"""
-        self._append_log(f"📄 文件: {file_path} - {status}")
+        self._add_log(f"📄 文件: {file_path} - {status}")
 
     def _on_scan_file_found(self, ide_type: str, file_path: str, status: str):
         """扫描文件发现回调"""
-        self._append_log(f"📄 {ide_type}: {file_path} - {status}")
+        self._add_log(f"📄 {ide_type}: {file_path} - {status}")

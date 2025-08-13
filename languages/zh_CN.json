@@ -8,7 +8,16 @@
     "about": "关于",
     "patch_mode": "补丁模式:",
     "code_patch": "代码补丁",
-    "operation_log": "操作日志:"
+    "operation_log": "操作日志:",
+    "description": "AugmentCode-Free 是一个开源免费的IDE维护工具。",
+    "supported_ides": "支持的IDE:",
+    "ide_list": "• VS Code\n• Cursor\n• Windsurf",
+    "main_features": "主要功能:",
+    "feature_list": "• 清理IDE数据库\n• 修改遥测ID\n• 一键修改所有配置",
+    "opensource_notice": "本项目完全开源免费！",
+    "warning_notice": "⚠️ 重要提示：\n本项目完全开源免费！如果有人向您收费，请立即联系销售方退款并举报诈骗行为。",
+    "project_address": "项目地址：",
+    "dont_show_again": "启动时不再显示此对话框"
   },
   "patch_modes": {
     "random": "随机假数据",
