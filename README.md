@@ -18,6 +18,22 @@ https://t.me/+rL2-my2wYy5hODA1
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)](https://github.com/BasicProtein/AugmentCode-Free)
 
+#### 2025年8月14日更新 (v2.0.2-路径优化版)：
+
+**🔍 扩展文件扫描优化**：
+- **路径模式增强**：添加 `augment.vscode-augment-*` 等多种扩展名称模式
+- **搜索策略改进**：当标准搜索失败时，自动启用关键词搜索作为备选方案
+- **文件验证优化**：支持识别压缩/混淆的扩展文件，基于文件路径进行智能判断
+- **调试信息增强**：添加详细的搜索过程日志，帮助定位扫描问题
+- **兼容性提升**：完美支持 Cursor 使用 `vscode-augment` 扩展名的情况
+
+**🔍 Extension File Scanning Optimization**：
+- **Enhanced Path Patterns**: Added multiple extension name patterns like `augment.vscode-augment-*`
+- **Improved Search Strategy**: Automatically enables keyword search as fallback when standard search fails
+- **Optimized File Validation**: Supports recognition of compressed/obfuscated extension files with intelligent path-based judgment
+- **Enhanced Debug Information**: Added detailed search process logs to help locate scanning issues
+- **Improved Compatibility**: Perfect support for Cursor using `vscode-augment` extension names
+
 #### 2025年8月12日更新 (v2.0.0)：
 
 **🚀 重大功能升级 - 增强清理引擎**：
@@ -99,7 +115,7 @@ AugmentCode unlimited free refill plan; new accounts can get 600 free Claude Son
 
 #### 2025年7月31日更新：
 - 目前比较稳定的计划是切换社区计划或者是通过Google的GCP或者Github Actions间接无限使用新账号
-- 参考YouTube视频[Google Cloud Platform](https://youtu.be/P2ADJdk5mYo?si=2NgH6qIHP7BBEUUf)
+- 详见YouTube视频[Google Cloud Platform](https://youtu.be/P2ADJdk5mYo?si=2NgH6qIHP7BBEUUf)
 
 
 **切换社区计划：**

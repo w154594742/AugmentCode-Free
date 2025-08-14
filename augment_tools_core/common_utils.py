@@ -148,7 +148,7 @@ def detect_windsurf_paths() -> Dict[str, Path]:
     home = Path.home()
     system = platform.system()
 
-    # 构建标准路径（参考项目的方式）
+    # 构建标准路径
     if system == "Windows":
         appdata = os.environ.get("APPDATA")
         if appdata:
