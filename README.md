@@ -18,21 +18,21 @@ https://t.me/+rL2-my2wYy5hODA1
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)](https://github.com/BasicProtein/AugmentCode-Free)
 
-#### 2025年8月14日更新 (v2.0.2-路径优化版)：
+#### 2025年8月14日更新 (v2.0.2)：
 
 **🔍 扩展文件扫描优化**：
-- **路径模式增强**：添加 `augment.vscode-augment-*` 等多种扩展名称模式
+- **路径模式增强**：添加 `augment.vscode-augment-*` 等多种扩展名称模式，提升扫描成功率
 - **搜索策略改进**：当标准搜索失败时，自动启用关键词搜索作为备选方案
 - **文件验证优化**：支持识别压缩/混淆的扩展文件，基于文件路径进行智能判断
 - **调试信息增强**：添加详细的搜索过程日志，帮助定位扫描问题
-- **兼容性提升**：完美支持 Cursor 使用 `vscode-augment` 扩展名的情况
+- **全IDE支持**：优化覆盖 VS Code、Cursor、Windsurf 等所有支持的IDE
 
 **🔍 Extension File Scanning Optimization**：
-- **Enhanced Path Patterns**: Added multiple extension name patterns like `augment.vscode-augment-*`
+- **Enhanced Path Patterns**: Added multiple extension name patterns like `augment.vscode-augment-*` to improve scan success rate
 - **Improved Search Strategy**: Automatically enables keyword search as fallback when standard search fails
 - **Optimized File Validation**: Supports recognition of compressed/obfuscated extension files with intelligent path-based judgment
 - **Enhanced Debug Information**: Added detailed search process logs to help locate scanning issues
-- **Improved Compatibility**: Perfect support for Cursor using `vscode-augment` extension names
+- **Full IDE Support**: Optimization covers all supported IDEs including VS Code, Cursor, Windsurf
 
 #### 2025年8月12日更新 (v2.0.0)：
 

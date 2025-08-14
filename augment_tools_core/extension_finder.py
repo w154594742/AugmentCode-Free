@@ -75,16 +75,33 @@ class ExtensionFinder:
             },
             IDEType.WINDSURF: {
                 "windows": [
+                    # windsurf 可能使用 vscode-augment 扩展名称
+                    os.path.expanduser("~/.windsurf/extensions/augment.vscode-augment-*/out/extension.js"),
+                    os.path.expanduser("~/AppData/Roaming/Windsurf/User/extensions/augment.vscode-augment-*/out/extension.js"),
+                    # 原有的 windsurf-augment 模式
                     os.path.expanduser("~/.windsurf/extensions/augment.windsurf-augment-*/out/extension.js"),
                     os.path.expanduser("~/AppData/Roaming/Windsurf/User/extensions/augment.windsurf-augment-*/out/extension.js"),
+                    # 通用 augment 模式
+                    os.path.expanduser("~/.windsurf/extensions/augment.*/out/extension.js"),
+                    os.path.expanduser("~/AppData/Roaming/Windsurf/User/extensions/augment.*/out/extension.js"),
+                    # 额外的可能路径
+                    os.path.expanduser("~/AppData/Local/Programs/windsurf/resources/app/extensions/augment.*/out/extension.js"),
                 ],
                 "linux": [
+                    os.path.expanduser("~/.windsurf/extensions/augment.vscode-augment-*/out/extension.js"),
+                    os.path.expanduser("~/.config/Windsurf/User/extensions/augment.vscode-augment-*/out/extension.js"),
                     os.path.expanduser("~/.windsurf/extensions/augment.windsurf-augment-*/out/extension.js"),
                     os.path.expanduser("~/.config/Windsurf/User/extensions/augment.windsurf-augment-*/out/extension.js"),
+                    os.path.expanduser("~/.windsurf/extensions/augment.*/out/extension.js"),
+                    os.path.expanduser("~/.config/Windsurf/User/extensions/augment.*/out/extension.js"),
                 ],
                 "darwin": [
+                    os.path.expanduser("~/.windsurf/extensions/augment.vscode-augment-*/out/extension.js"),
+                    os.path.expanduser("~/Library/Application Support/Windsurf/User/extensions/augment.vscode-augment-*/out/extension.js"),
                     os.path.expanduser("~/.windsurf/extensions/augment.windsurf-augment-*/out/extension.js"),
                     os.path.expanduser("~/Library/Application Support/Windsurf/User/extensions/augment.windsurf-augment-*/out/extension.js"),
+                    os.path.expanduser("~/.windsurf/extensions/augment.*/out/extension.js"),
+                    os.path.expanduser("~/Library/Application Support/Windsurf/User/extensions/augment.*/out/extension.js"),
                 ]
             }
         }
