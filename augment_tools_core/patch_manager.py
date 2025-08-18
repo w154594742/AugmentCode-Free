@@ -14,6 +14,15 @@ from enum import Enum
 
 from .common_utils import print_info, print_success, print_error, print_warning, IDEType
 
+# 导入语言管理器，但要处理可能的导入错误
+try:
+    from language_manager import get_text
+    LANGUAGE_SUPPORT = True
+except ImportError:
+    LANGUAGE_SUPPORT = False
+    def get_text(key, **kwargs):
+        return key
+
 
 class PatchMode(Enum):
     """补丁模式枚举"""
@@ -184,15 +193,15 @@ class PatchManager:
         """获取文件的补丁状态"""
         try:
             if not os.path.exists(file_path):
-                return "文件不存在"
-            
+                return get_text("patch.status.file_not_found") if LANGUAGE_SUPPORT else "文件不存在"
+
             with open(file_path, 'r', encoding='utf-8') as f:
                 content = f.read()
-            
+
             if self._is_already_patched(content):
-                return "已补丁"
+                return get_text("patch.status.patched") if LANGUAGE_SUPPORT else "已补丁"
             else:
-                return "未补丁"
-                
+                return get_text("patch.status.not_patched") if LANGUAGE_SUPPORT else "未补丁"
+
         except Exception:
-            return "状态未知"
+            return get_text("patch.status.status_unknown") if LANGUAGE_SUPPORT else "状态未知"

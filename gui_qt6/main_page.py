@@ -763,20 +763,21 @@ class MainPage(QWidget):
         ide_results = results.get(ide_type.value, [])
 
         if not ide_results:
-            self.patch_status_label.setText("状态: 未找到扩展文件")
+            self.patch_status_label.setText(get_text("status.not_scanned"))
             self.patch_status_label.setStyleSheet("color: #6b7280; font-style: italic;")
         else:
-            patched_count = sum(1 for r in ide_results if r['status'] == '已补丁')
+            patched_status = get_text("patch.status.patched")
+            patched_count = sum(1 for r in ide_results if r['status'] == patched_status)
             total_count = len(ide_results)
 
             if patched_count == 0:
-                self.patch_status_label.setText(f"状态: 未补丁 ({total_count} 个文件)")
+                self.patch_status_label.setText(f"{get_text('status.not_scanned')}: {get_text('patch.status.not_patched')} ({total_count} 个文件)")
                 self.patch_status_label.setStyleSheet("color: #dc2626; font-weight: bold;")
             elif patched_count == total_count:
-                self.patch_status_label.setText(f"状态: 已补丁 ({patched_count}/{total_count})")
+                self.patch_status_label.setText(f"{get_text('status.ready')}: {get_text('patch.status.patched')} ({patched_count}/{total_count})")
                 self.patch_status_label.setStyleSheet("color: #059669; font-weight: bold;")
             else:
-                self.patch_status_label.setText(f"状态: 部分补丁 ({patched_count}/{total_count})")
+                self.patch_status_label.setText(f"{get_text('status.warning')}: 部分补丁 ({patched_count}/{total_count})")
                 self.patch_status_label.setStyleSheet("color: #d97706; font-weight: bold;")
 
     def _on_patch_file_found(self, file_path: str, status: str):

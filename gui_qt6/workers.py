@@ -11,6 +11,7 @@ from augment_tools_core.common_utils import (
 )
 from augment_tools_core.database_manager import clean_ide_database, clean_ide_database_enhanced
 from augment_tools_core.telemetry_manager import modify_ide_telemetry_ids
+from language_manager import get_text
 
 
 class BaseWorker(QThread):
@@ -51,39 +52,41 @@ class CloseIDEWorker(BaseWorker):
     def run(self):
         """执行关闭IDE任务"""
         try:
-            self.emit_progress(f"正在关闭 {self.ide_name}...")
-            self.emit_status(f"正在关闭 {self.ide_name}...", "info")
-            
+            self.emit_progress(get_text("workers.close_ide.closing", ide_name=self.ide_name))
+            self.emit_status(get_text("workers.close_ide.closing", ide_name=self.ide_name), "info")
+
             # 获取进程名称
             process_names = get_ide_process_names(self.ide_type)
             closed_any = False
-            
+
             # 查找并关闭进程
             for proc in psutil.process_iter(['pid', 'name']):
                 if self.is_cancelled:
                     return
-                
+
                 if proc.info['name'] in process_names:
                     try:
                         proc.terminate()
                         closed_any = True
-                        self.emit_progress(f"已关闭 {proc.info['name']} (PID: {proc.info['pid']})")
+                        self.emit_progress(get_text("workers.close_ide.closed_process",
+                                                  process_name=proc.info['name'],
+                                                  pid=proc.info['pid']))
                     except Exception as e:
-                        self.emit_progress(f"关闭进程失败: {e}")
-                        self.emit_status(f"关闭进程失败: {e}", "error")
-            
+                        self.emit_progress(get_text("workers.close_ide.close_failed", error=str(e)))
+                        self.emit_status(get_text("workers.close_ide.close_failed", error=str(e)), "error")
+
             if closed_any:
-                self.emit_progress(f"{self.ide_name} 已成功关闭")
-                self.emit_status(f"{self.ide_name} 已成功关闭", "success")
+                self.emit_progress(get_text("workers.close_ide.success", ide_name=self.ide_name))
+                self.emit_status(get_text("workers.close_ide.success", ide_name=self.ide_name), "success")
                 self.task_completed.emit(True)
             else:
-                self.emit_progress(f"未找到运行中的 {self.ide_name} 进程")
-                self.emit_status(f"未找到运行中的 {self.ide_name} 进程", "warning")
+                self.emit_progress(get_text("workers.close_ide.not_found", ide_name=self.ide_name))
+                self.emit_status(get_text("workers.close_ide.not_found", ide_name=self.ide_name), "warning")
                 self.task_completed.emit(True)
-                
+
         except Exception as e:
-            self.emit_progress(f"关闭 {self.ide_name} 时发生错误: {str(e)}")
-            self.emit_status(f"关闭失败: {str(e)}", "error")
+            self.emit_progress(get_text("workers.close_ide.error", ide_name=self.ide_name, error=str(e)))
+            self.emit_status(get_text("status.failed"), "error")
             self.task_completed.emit(False)
 
 
@@ -99,8 +102,9 @@ class CleanDatabaseWorker(BaseWorker):
     def run(self):
         """执行清理数据库任务（增强版）"""
         try:
-            self.emit_progress(f"开始清理 {self.ide_name} 数据库 (关键字: '{self.keyword}')")
-            self.emit_status(f"正在清理 {self.ide_name} 数据库...", "info")
+            self.emit_progress(get_text("workers.clean_db.starting",
+                                      ide_name=self.ide_name, keyword=self.keyword))
+            self.emit_status(get_text("workers.clean_db.cleaning", ide_name=self.ide_name), "info")
 
             # 使用增强版数据库清理，获取详细结果
             result = clean_ide_database_enhanced(self.ide_type, self.keyword)
@@ -111,25 +115,26 @@ class CleanDatabaseWorker(BaseWorker):
             if result["success"]:
                 # 显示详细的清理结果
                 if result["entries_removed"] > 0:
-                    self.emit_progress(f"成功删除 {result['entries_removed']} 个包含关键字的条目")
+                    self.emit_progress(get_text("workers.clean_db.entries_removed",
+                                              count=result['entries_removed']))
                 else:
-                    self.emit_progress("未找到需要清理的条目")
+                    self.emit_progress(get_text("workers.clean_db.no_entries"))
 
                 if result["backup_created"]:
-                    self.emit_progress("已自动创建数据库备份")
+                    self.emit_progress(get_text("workers.clean_db.backup_created"))
 
-                self.emit_progress("数据库清理过程完成。")
-                self.emit_status("数据库清理完成", "success")
+                self.emit_progress(get_text("workers.clean_db.completed"))
+                self.emit_status(get_text("status.success"), "success")
                 self.task_completed.emit(True)
             else:
-                error_msg = result.get("error_message", "未知错误")
-                self.emit_progress(f"数据库清理失败: {error_msg}")
-                self.emit_status("数据库清理失败", "error")
+                error_msg = result.get("error_message", get_text("status.error"))
+                self.emit_progress(get_text("workers.clean_db.failed", error=error_msg))
+                self.emit_status(get_text("status.error"), "error")
                 self.task_completed.emit(False)
 
         except Exception as e:
-            self.emit_progress(f"清理数据库时发生错误: {str(e)}")
-            self.emit_status(f"清理失败: {str(e)}", "error")
+            self.emit_progress(get_text("workers.clean_db.error", error=str(e)))
+            self.emit_status(get_text("status.failed"), "error")
             self.task_completed.emit(False)
 
 
@@ -144,27 +149,27 @@ class ModifyIDsWorker(BaseWorker):
     def run(self):
         """执行修改遥测ID任务"""
         try:
-            self.emit_progress(f"开始修改 {self.ide_name} 遥测 ID")
-            self.emit_status(f"正在修改 {self.ide_name} 遥测ID...", "info")
-            
+            self.emit_progress(get_text("workers.modify_ids.starting", ide_name=self.ide_name))
+            self.emit_status(get_text("workers.modify_ids.modifying", ide_name=self.ide_name), "info")
+
             # 执行遥测ID修改
             success = modify_ide_telemetry_ids(self.ide_type)
-            
+
             if self.is_cancelled:
                 return
-            
+
             if success:
-                self.emit_progress("遥测 ID 修改过程完成。")
-                self.emit_status("遥测ID修改完成", "success")
+                self.emit_progress(get_text("workers.modify_ids.completed"))
+                self.emit_status(get_text("status.success"), "success")
                 self.task_completed.emit(True)
             else:
-                self.emit_progress("遥测 ID 修改过程报告错误。请检查之前的消息。")
-                self.emit_status("遥测ID修改失败", "error")
+                self.emit_progress(get_text("workers.modify_ids.failed"))
+                self.emit_status(get_text("status.error"), "error")
                 self.task_completed.emit(False)
-                
+
         except Exception as e:
-            self.emit_progress(f"修改遥测 ID 时发生错误: {str(e)}")
-            self.emit_status(f"修改失败: {str(e)}", "error")
+            self.emit_progress(get_text("workers.modify_ids.error", error=str(e)))
+            self.emit_status(get_text("status.failed"), "error")
             self.task_completed.emit(False)
 
 
@@ -180,54 +185,54 @@ class RunAllWorker(BaseWorker):
     def run(self):
         """执行所有工具任务"""
         try:
-            self.emit_progress(f"开始为 {self.ide_name} 执行所有工具")
-            self.emit_status(f"正在执行一键修改...", "info")
-            
+            self.emit_progress(get_text("workers.run_all.starting", ide_name=self.ide_name))
+            self.emit_status(get_text("workers.run_all.running"), "info")
+
             # 步骤1: 关闭IDE
-            self.emit_progress(f"步骤 1: 关闭 {self.ide_name}")
+            self.emit_progress(get_text("workers.run_all.step_close", ide_name=self.ide_name))
             self._close_ide()
-            
+
             if self.is_cancelled:
                 return
-            
+
             # 步骤2: 清理数据库
-            self.emit_progress(f"步骤 2: 清理 {self.ide_name} 数据库")
+            self.emit_progress(get_text("workers.run_all.step_clean", ide_name=self.ide_name))
             db_success = clean_ide_database(self.ide_type, self.keyword)
-            
+
             if self.is_cancelled:
                 return
-            
+
             if db_success:
-                self.emit_progress("数据库清理完成")
+                self.emit_progress(get_text("workers.run_all.db_completed"))
             else:
-                self.emit_progress("数据库清理失败")
-            
+                self.emit_progress(get_text("workers.run_all.db_failed"))
+
             # 步骤3: 修改遥测ID
-            self.emit_progress(f"步骤 3: 修改 {self.ide_name} 遥测ID")
+            self.emit_progress(get_text("workers.run_all.step_modify", ide_name=self.ide_name))
             id_success = modify_ide_telemetry_ids(self.ide_type)
-            
+
             if self.is_cancelled:
                 return
-            
+
             if id_success:
-                self.emit_progress("遥测ID修改完成")
+                self.emit_progress(get_text("workers.run_all.ids_completed"))
             else:
-                self.emit_progress("遥测ID修改失败")
-            
+                self.emit_progress(get_text("workers.run_all.ids_failed"))
+
             # 完成
             overall_success = db_success and id_success
             if overall_success:
-                self.emit_progress(f"{self.ide_name}所有工具已完成执行序列。")
-                self.emit_status("一键修改完成", "success")
+                self.emit_progress(get_text("workers.run_all.all_completed", ide_name=self.ide_name))
+                self.emit_status(get_text("status.completed"), "success")
             else:
-                self.emit_progress(f"{self.ide_name}部分工具执行失败。")
-                self.emit_status("一键修改部分失败", "warning")
-            
+                self.emit_progress(get_text("workers.run_all.partial_failed", ide_name=self.ide_name))
+                self.emit_status(get_text("status.failed"), "warning")
+
             self.task_completed.emit(overall_success)
-            
+
         except Exception as e:
-            self.emit_progress(f"运行所有工具时发生错误: {str(e)}")
-            self.emit_status(f"执行失败: {str(e)}", "error")
+            self.emit_progress(get_text("workers.run_all.error", error=str(e)))
+            self.emit_status(get_text("status.failed"), "error")
             self.task_completed.emit(False)
     
     def _close_ide(self):
@@ -240,11 +245,13 @@ class RunAllWorker(BaseWorker):
                 if proc.info['name'] in process_names:
                     try:
                         proc.terminate()
-                        self.emit_progress(f"已关闭 {proc.info['name']} (PID: {proc.info['pid']})")
+                        self.emit_progress(get_text("workers.close_ide.closed_process",
+                                                  process_name=proc.info['name'],
+                                                  pid=proc.info['pid']))
                     except Exception as e:
-                        self.emit_progress(f"关闭进程失败: {e}")
+                        self.emit_progress(get_text("workers.close_ide.close_failed", error=str(e)))
         except Exception as e:
-            self.emit_progress(f"关闭IDE时发生错误: {e}")
+            self.emit_progress(get_text("workers.close_ide.error", ide_name=self.ide_name, error=str(e)))
 
 
 # === 新增工作线程：增强清理功能 ===
