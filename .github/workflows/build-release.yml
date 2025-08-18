@@ -94,10 +94,18 @@ jobs:
           --collect-all=PyQt6 \
           main.py
 
-    - name: List dist contents
+    - name: List dist contents (Windows)
+      if: matrix.platform == 'windows'
       run: |
         echo "Contents of dist directory:"
-        ls -la dist/ || dir dist\
+        dir dist
+      shell: cmd
+
+    - name: List dist contents (Unix)
+      if: matrix.platform != 'windows'
+      run: |
+        echo "Contents of dist directory:"
+        ls -la dist/
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
