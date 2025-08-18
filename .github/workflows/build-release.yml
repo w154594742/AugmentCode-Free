@@ -20,28 +20,13 @@ jobs:
         include:
           - os: windows-2022
             platform: windows
-            build_cmd: |
-              pyinstaller --onefile --windowed ^
-                --name "AugmentCode-Free-v${{ github.event.inputs.version || github.ref_name }}-windows" ^
-                --add-data "languages;languages" ^
-                --add-data "config;config" ^
-                main.py
+            python-version: '3.10'
           - os: macos-13
             platform: macos
-            build_cmd: |
-              pyinstaller --onefile --windowed \
-                --name "AugmentCode-Free-v${{ github.event.inputs.version || github.ref_name }}-macos" \
-                --add-data "languages:languages" \
-                --add-data "config:config" \
-                main.py
+            python-version: '3.10'
           - os: ubuntu-22.04
             platform: linux
-            build_cmd: |
-              pyinstaller --onefile \
-                --name "AugmentCode-Free-v${{ github.event.inputs.version || github.ref_name }}-linux" \
-                --add-data "languages:languages" \
-                --add-data "config:config" \
-                main.py
+            python-version: '3.10'
 
     steps:
     - name: Checkout code
@@ -50,7 +35,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
-        python-version: '3.10'
+        python-version: ${{ matrix.python-version }}
 
     - name: Install system dependencies (Linux)
       if: matrix.platform == 'linux'
@@ -75,8 +60,44 @@ jobs:
         pip install -r requirements.txt
         pip install pyinstaller
 
-    - name: Build application
-      run: ${{ matrix.build_cmd }}
+    - name: Build application (Windows)
+      if: matrix.platform == 'windows'
+      run: |
+        pyinstaller --onefile --windowed --name "AugmentCode-Free-v${{ github.event.inputs.version || github.ref_name }}-windows" --add-data "languages;languages" --add-data "config;config" --hidden-import=PyQt6.QtCore --hidden-import=PyQt6.QtGui --hidden-import=PyQt6.QtWidgets --hidden-import=psutil --collect-all=PyQt6 main.py
+      shell: cmd
+
+    - name: Build application (macOS)
+      if: matrix.platform == 'macos'
+      run: |
+        pyinstaller --onefile --windowed \
+          --name "AugmentCode-Free-v${{ github.event.inputs.version || github.ref_name }}-macos" \
+          --add-data "languages:languages" \
+          --add-data "config:config" \
+          --hidden-import=PyQt6.QtCore \
+          --hidden-import=PyQt6.QtGui \
+          --hidden-import=PyQt6.QtWidgets \
+          --hidden-import=psutil \
+          --collect-all=PyQt6 \
+          main.py
+
+    - name: Build application (Linux)
+      if: matrix.platform == 'linux'
+      run: |
+        pyinstaller --onefile \
+          --name "AugmentCode-Free-v${{ github.event.inputs.version || github.ref_name }}-linux" \
+          --add-data "languages:languages" \
+          --add-data "config:config" \
+          --hidden-import=PyQt6.QtCore \
+          --hidden-import=PyQt6.QtGui \
+          --hidden-import=PyQt6.QtWidgets \
+          --hidden-import=psutil \
+          --collect-all=PyQt6 \
+          main.py
+
+    - name: List dist contents
+      run: |
+        echo "Contents of dist directory:"
+        ls -la dist/ || dir dist\
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
@@ -98,7 +119,9 @@ jobs:
         path: ./artifacts
     
     - name: Display structure of downloaded files
-      run: ls -la ./artifacts
+      run: |
+        echo "Downloaded artifacts:"
+        find ./artifacts -type f -exec ls -la {} \;
     
     - name: Create Release
       uses: softprops/action-gh-release@v2
@@ -132,11 +155,12 @@ jobs:
           2. 添加执行权限: `chmod +x AugmentCode-Free-*-linux`
           3. 运行: `./AugmentCode-Free-*-linux`
           
-          ### 🔧 技术改进
-          - ✅ 修复按钮显示键名问题
-          - ✅ 完善国际化支持
-          - ✅ 修复语言文件缺失
-          - ✅ 支持多平台自动构建
+          ### 🔧 技术改进 v${{ github.ref_name }}
+          - ✅ 修复按钮显示键名问题，现在正确显示中文/英文文本
+          - ✅ 修复PyInstaller打包缺失语言文件的问题
+          - ✅ 完善所有工作线程和补丁操作的国际化支持
+          - ✅ 修复补丁状态"已补丁"等硬编码文本
+          - ✅ 支持Windows、macOS、Linux多平台自动构建
           
           ### ⚠️ 重要提示
           - 本项目完全开源免费！
