@@ -15,26 +15,40 @@ jobs:
   build:
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         include:
-          - os: windows-latest
+          - os: windows-2022
             platform: windows
-            extension: .exe
-            build_cmd: pyinstaller --onefile --windowed --name "AugmentCode-Free-v${{ github.event.inputs.version || github.ref_name }}-windows" --add-data "languages;languages" --add-data "config;config" main.py
-          - os: macos-latest
+            build_cmd: |
+              pyinstaller --onefile --windowed ^
+                --name "AugmentCode-Free-v${{ github.event.inputs.version || github.ref_name }}-windows" ^
+                --add-data "languages;languages" ^
+                --add-data "config;config" ^
+                main.py
+          - os: macos-13
             platform: macos
-            extension: ""
-            build_cmd: pyinstaller --onefile --windowed --name "AugmentCode-Free-v${{ github.event.inputs.version || github.ref_name }}-macos" --add-data "languages:languages" --add-data "config:config" main.py
-          - os: ubuntu-latest
+            build_cmd: |
+              pyinstaller --onefile --windowed \
+                --name "AugmentCode-Free-v${{ github.event.inputs.version || github.ref_name }}-macos" \
+                --add-data "languages:languages" \
+                --add-data "config:config" \
+                main.py
+          - os: ubuntu-22.04
             platform: linux
-            extension: ""
-            build_cmd: pyinstaller --onefile --name "AugmentCode-Free-v${{ github.event.inputs.version || github.ref_name }}-linux" --add-data "languages:languages" --add-data "config:config" main.py
+            build_cmd: |
+              pyinstaller --onefile \
+                --name "AugmentCode-Free-v${{ github.event.inputs.version || github.ref_name }}-linux" \
+                --add-data "languages:languages" \
+                --add-data "config:config" \
+                main.py
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v4
 
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '3.10'
 
@@ -42,7 +56,18 @@ jobs:
       if: matrix.platform == 'linux'
       run: |
         sudo apt-get update
-        sudo apt-get install -y libgl1-mesa-glx libegl1-mesa libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
+        sudo apt-get install -y \
+          libgl1-mesa-glx \
+          libegl1-mesa \
+          libxrandr2 \
+          libxss1 \
+          libxcursor1 \
+          libxcomposite1 \
+          libasound2 \
+          libxi6 \
+          libxtst6 \
+          libglib2.0-0 \
+          libgtk-3-0
 
     - name: Install Python dependencies
       run: |
@@ -54,27 +79,31 @@ jobs:
       run: ${{ matrix.build_cmd }}
 
     - name: Upload artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: ${{ matrix.platform }}-build
         path: dist/*
+        retention-days: 30
 
   release:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     if: startsWith(github.ref, 'refs/tags/')
     
     steps:
     - name: Download all artifacts
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
+      with:
+        merge-multiple: true
+        path: ./artifacts
+    
+    - name: Display structure of downloaded files
+      run: ls -la ./artifacts
     
     - name: Create Release
-      uses: softprops/action-gh-release@v1
+      uses: softprops/action-gh-release@v2
       with:
-        files: |
-          windows-build/*
-          macos-build/*
-          linux-build/*
+        files: ./artifacts/*
         tag_name: ${{ github.ref_name }}
         name: AugmentCode-Free v${{ github.ref_name }}
         body: |
@@ -90,20 +119,29 @@ jobs:
           **Windows:**
           1. 下载 `.exe` 文件
           2. 双击运行（可能需要管理员权限）
+          3. 首次运行可能需要允许Windows Defender
           
           **macOS:**
           1. 下载 macOS 版本
           2. 添加执行权限: `chmod +x AugmentCode-Free-*-macos`
           3. 运行: `./AugmentCode-Free-*-macos`
+          4. 如遇安全提示，请在系统偏好设置中允许
           
           **Linux:**
           1. 下载 Linux 版本
           2. 添加执行权限: `chmod +x AugmentCode-Free-*-linux`
           3. 运行: `./AugmentCode-Free-*-linux`
           
+          ### 🔧 技术改进
+          - ✅ 修复按钮显示键名问题
+          - ✅ 完善国际化支持
+          - ✅ 修复语言文件缺失
+          - ✅ 支持多平台自动构建
+          
           ### ⚠️ 重要提示
           - 本项目完全开源免费！
           - 如有人向您收费，请立即举报诈骗行为
+          - 项目地址：https://github.com/BasicProtein/AugmentCode-Free
         draft: false
         prerelease: false
       env:
