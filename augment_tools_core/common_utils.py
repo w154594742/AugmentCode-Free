@@ -89,28 +89,14 @@ def get_ide_paths(ide_type: IDEType) -> Optional[Dict[str, Path]]:
             paths["storage_json"] = base_dir / "globalStorage" / "storage.json"
 
         elif ide_type == IDEType.CURSOR:
-            if system == "Windows":
-                appdata = os.environ.get("APPDATA")
-                if not appdata:
-                    print_error("APPDATA environment variable not found. Cannot locate Cursor data.")
-                    return None
-                base_dir = Path(appdata) / "Cursor" / "User"
-            elif system == "Darwin":  # macOS
-                # Cursor uses both locations based on your provided info
-                base_dir = Path.home() / ".cursor"
-                # Also check VS Code location for settings
-                vscode_settings = Path.home() / "Library" / "Application Support" / "Code" / "User"
-                paths["vscode_settings"] = vscode_settings / "settings.json"
-            elif system == "Linux":
-                base_dir = Path.home() / ".cursor"
-            else:
-                print_error(f"Unsupported operating system: {system}")
+            # Cursor 可能有多种路径结构，需要检测实际存在的路径
+            cursor_paths = detect_cursor_paths()
+            if not cursor_paths:
+                print_error("无法找到 Cursor 数据目录。请确保 Cursor 已正确安装。")
+                print_info("已检查标准路径和备用路径，详细信息请查看上方输出。")
                 return None
 
-            # Cursor specific paths
-            paths["state_db"] = base_dir / "globalStorage" / "state.vscdb"
-            paths["storage_json"] = base_dir / "globalStorage" / "storage.json"
-            paths["extensions"] = base_dir.parent / "extensions"
+            paths.update(cursor_paths)
 
         elif ide_type == IDEType.WINDSURF:
             # Windsurf 可能有多种路径结构，需要检测实际存在的路径
@@ -233,6 +219,123 @@ def detect_windsurf_paths() -> Dict[str, Path]:
             print_info(f"    ❌ 不存在: {standard_base}")
 
     print_info("  Codeium路径:")
+    for base_dir in possible_base_dirs[1:]:  # 跳过标准路径
+        if base_dir.exists():
+            print_info(f"    ✅ 存在: {base_dir}")
+            try:
+                for item in base_dir.iterdir():
+                    if item.is_dir():
+                        print_info(f"      子目录: {item.name}")
+            except PermissionError:
+                print_warning(f"      无法访问目录内容 (权限不足)")
+        else:
+            print_info(f"    ❌ 不存在: {base_dir}")
+
+    return {}
+
+def detect_cursor_paths() -> Dict[str, Path]:
+    """
+    检测 Cursor 的实际数据路径。
+    支持两种路径结构：
+    1. 标准 Application Support 结构：~/Library/Application Support/Cursor/ (macOS) 或 %APPDATA%/Cursor/ (Windows)
+    2. 备用路径：~/.cursor/
+
+    Returns:
+        包含实际存在路径的字典，如果未找到则返回空字典
+    """
+    import platform
+
+    home = Path.home()
+    system = platform.system()
+
+    # 构建标准路径
+    if system == "Windows":
+        appdata = os.environ.get("APPDATA")
+        if appdata:
+            standard_base = Path(appdata) / "Cursor"
+        else:
+            standard_base = None
+    elif system == "Darwin":  # macOS
+        standard_base = home / "Library" / "Application Support" / "Cursor"
+    else:  # Linux
+        standard_base = home / ".config" / "Cursor"
+
+    # 所有可能的基础目录（按优先级排序）
+    possible_base_dirs = []
+
+    # 1. 标准路径（优先级最高）
+    if standard_base:
+        possible_base_dirs.append(standard_base)
+
+    # 2. 备用路径
+    possible_base_dirs.extend([
+        home / ".cursor",
+    ])
+
+    # 可能的子目录结构（按优先级排序）
+    possible_structures = [
+        # 标准 VSCode 结构（最高优先级）
+        ("User/globalStorage", "User/extensions"),
+        # 简化结构
+        ("globalStorage", "extensions"),
+    ]
+
+    for base_dir in possible_base_dirs:
+        if not base_dir.exists():
+            continue
+
+        # 判断路径类型以便更好的调试信息
+        if "Cursor" in str(base_dir) and ("AppData" in str(base_dir) or "Application Support" in str(base_dir) or ".config" in str(base_dir)):
+            path_type = "标准路径"
+        elif ".cursor" in str(base_dir):
+            path_type = "备用路径"
+        else:
+            path_type = "其他路径"
+
+        print_info(f"检查 Cursor {path_type}: {base_dir}")
+
+        for storage_path, ext_path in possible_structures:
+            state_db = base_dir / storage_path / "state.vscdb"
+            storage_json = base_dir / storage_path / "storage.json"
+            extensions = base_dir / ext_path
+
+            # 检查关键文件是否存在
+            if state_db.exists() or storage_json.exists():
+                print_success(f"✅ 找到 Cursor 数据目录 ({path_type}): {base_dir}")
+                print_info(f"  - 数据库路径: {state_db} {'✅' if state_db.exists() else '❌'}")
+                print_info(f"  - 存储文件路径: {storage_json} {'✅' if storage_json.exists() else '❌'}")
+                print_info(f"  - 扩展目录: {extensions}")
+
+                # 为了兼容性，也添加VS Code设置路径（如果在macOS上）
+                result = {
+                    "state_db": state_db,
+                    "storage_json": storage_json,
+                    "extensions": extensions
+                }
+
+                if system == "Darwin":
+                    vscode_settings = home / "Library" / "Application Support" / "Code" / "User"
+                    result["vscode_settings"] = vscode_settings / "settings.json"
+
+                return result
+
+    # 如果没有找到，列出实际存在的目录以帮助调试
+    print_warning("❌ 未找到 Cursor 数据文件。")
+    print_info("📋 检查的路径结构:")
+    print_info("  标准路径:")
+    if standard_base:
+        if standard_base.exists():
+            print_info(f"    ✅ 存在: {standard_base}")
+            try:
+                for item in standard_base.iterdir():
+                    if item.is_dir():
+                        print_info(f"      子目录: {item.name}")
+            except PermissionError:
+                print_warning(f"      无法访问目录内容 (权限不足)")
+        else:
+            print_info(f"    ❌ 不存在: {standard_base}")
+
+    print_info("  备用路径:")
     for base_dir in possible_base_dirs[1:]:  # 跳过标准路径
         if base_dir.exists():
             print_info(f"    ✅ 存在: {base_dir}")
