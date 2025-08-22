@@ -69,7 +69,10 @@ jobs:
     - name: Build application (macOS)
       if: matrix.platform == 'macos'
       run: |
-        # Create a proper macOS app bundle
+        # Check Python architecture
+        python -c "import platform; print(f'Python architecture: {platform.machine()}')"
+
+        # Create a proper macOS app bundle (without universal2 to avoid compatibility issues)
         pyinstaller --onefile --windowed \
           --name "AugmentCode-Free-v${{ github.event.inputs.version || github.ref_name }}-macos" \
           --add-data "languages:languages" \
@@ -93,7 +96,6 @@ jobs:
           --hidden-import=tempfile \
           --collect-all=PyQt6 \
           --osx-bundle-identifier=com.basicprotein.augmentcode-free \
-          --target-arch=universal2 \
           main.py
 
         # Also create a standalone executable without app bundle for compatibility
@@ -119,8 +121,11 @@ jobs:
           --hidden-import=shutil \
           --hidden-import=tempfile \
           --collect-all=PyQt6 \
-          --target-arch=universal2 \
           main.py
+
+        # Set proper permissions
+        chmod +x dist/AugmentCode-Free-v${{ github.event.inputs.version || github.ref_name }}-macos-standalone
+        chmod -R 755 dist/AugmentCode-Free-v${{ github.event.inputs.version || github.ref_name }}-macos.app
 
     - name: Build application (Linux)
       if: matrix.platform == 'linux'

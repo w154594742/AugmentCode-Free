@@ -88,7 +88,6 @@ pyinstaller --onefile \
     --hidden-import=shutil \
     --hidden-import=tempfile \
     --collect-all=PyQt6 \
-    --target-arch=universal2 \
     --clean \
     main.py
 
@@ -116,7 +115,6 @@ pyinstaller --onefile --windowed \
     --hidden-import=tempfile \
     --collect-all=PyQt6 \
     --osx-bundle-identifier=com.basicprotein.augmentcode-free \
-    --target-arch=universal2 \
     --clean \
     main.py
 

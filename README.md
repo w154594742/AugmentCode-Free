@@ -32,7 +32,7 @@ https://t.me/+rL2-my2wYy5hODA1
 - **构建问题修复 / Build Issues Fixed**：解决 "Failed to create parent directory structure" 错误 / Fixed "Failed to create parent directory structure" error
 - **双版本支持 / Dual Version Support**：提供应用包(.app)和独立可执行文件两个版本 / Provides both app bundle (.app) and standalone executable versions
 - **权限优化 / Permission Optimization**：自动处理 macOS 权限和安全设置 / Automatically handles macOS permissions and security settings
-- **架构支持 / Architecture Support**：支持 Universal2 架构（Intel + Apple Silicon）/ Supports Universal2 architecture (Intel + Apple Silicon)
+- **架构支持 / Architecture Support**：支持 Intel 和 Apple Silicon 架构 / Supports Intel and Apple Silicon architectures
 
 **文档完善 / Documentation Improvements:**
 - **构建指南 / Build Guide**：更新 macOS 构建说明，包含详细的故障排除 / Updated macOS build instructions with detailed troubleshooting
