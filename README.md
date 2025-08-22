@@ -18,6 +18,9 @@ https://t.me/+rL2-my2wYy5hODA1
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)](https://github.com/BasicProtein/AugmentCode-Free)
 
+#### 2025年8月14日更新 (v2.0.3)：
+- **修复cursor路径扫描**
+
 #### 2025年8月14日更新 (v2.0.2)：
 
 **🔍 扩展文件扫描优化**：
