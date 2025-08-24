@@ -36,7 +36,7 @@ https://t.me/+rL2-my2wYy5hODA1
 
 **文档完善 / Documentation Improvements:**
 - **构建指南 / Build Guide**：更新 macOS 构建说明，包含详细的故障排除 / Updated macOS build instructions with detailed troubleshooting
-- **故障排除 / Troubleshooting**：新增专用的 [macOS 故障排除指南](https://github.com/BasicProtein/AugmentCode-Free/blob/main/docs/MACOS_TROUBLESHOOTING.md) / Added dedicated [macOS Troubleshooting Guide](https://github.com/BasicProtein/AugmentCode-Free/blob/main/docs/MACOS_TROUBLESHOOTING.md)
+- **故障排除 / Troubleshooting**：新增专用的 [macOS 故障排除指南](https://github.com/BasicProtein/AugmentCode-Free/blob/master/docs/MACOS_TROUBLESHOOTING.md) / Added dedicated [macOS Troubleshooting Guide](https://github.com/BasicProtein/AugmentCode-Free/blob/master/docs/MACOS_TROUBLESHOOTING.md)
 - **自动化脚本 / Automation Scripts**：提供 `build_macos.sh` 自动构建脚本 / Provides `build_macos.sh` automated build script
 
 #### 2025年8月14日更新 (v2.0.2)：
